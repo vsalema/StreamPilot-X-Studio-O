@@ -1,0 +1,21 @@
+{
+  "name": "StreamPilot X",
+  "short_name": "SPX",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "description": "Player IPTV/stream avancé avec playlists M3U, favoris et contrôles custom.",
+  "background_color": "#0b1020",
+  "theme_color": "#0b1020",
+  "icons": [
+    {
+      "src": "./favicon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "./apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
