@@ -1139,7 +1139,7 @@ a:focus-visible,
 
 /* Bloc gauche : logo (taille 2B) */
 .spx-split-left img {
-  width: 34px;
+  width: 55px;
   height: 34px;
   object-fit: contain;
   border-radius: 6px;
