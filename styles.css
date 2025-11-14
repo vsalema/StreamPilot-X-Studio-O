@@ -1213,4 +1213,36 @@ a:focus-visible,
     opacity: 1;
   }
 }
+@media (max-width: 600px) {
+  /* La box elle-même est centrée horizontalement */
+  #currentTitle {
+    display: flex;
+    justify-content: center;
+  }
+
+  .spx-split-box {
+    margin: 0 auto;
+    justify-content: center;
+    padding: 6px 10px;
+    gap: 8px;
+  }
+
+  .spx-split-left img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .spx-split-right {
+    align-items: center;    /* centre le texte dans la colonne */
+    text-align: center;     /* texte centré */
+  }
+
+  .spx-split-right .title {
+    font-size: 0.95rem;
+  }
+
+  .spx-split-right .subtitle {
+    font-size: 0.7rem;
+  }
+}
 
