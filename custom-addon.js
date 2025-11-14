@@ -187,7 +187,7 @@
 
       row.appendChild(fav);
 
-            row.addEventListener('click', function () {
+             row.addEventListener('click', function () {
         // 1) Mettre à jour le titre + mini logo dans currentTitle
         if (typeof window.spxRenderChannelHeader === 'function') {
           window.spxRenderChannelHeader(
@@ -203,7 +203,9 @@
           window.loadSource(item.url);
         }
       });
-     // ✅ applique le mini-patch ICI (après handlers, avant append)
+    
+
+// ✅ applique le mini-patch ICI (après handlers, avant append)
       enhanceCustomItem(row);
 
       list.appendChild(row);

@@ -1077,4 +1077,48 @@ a:focus-visible,
   margin-right: 6px;
   border-radius: 4px;
 }
+.spx-split-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(20, 20, 20, 0.65);
+  padding: 8px 12px;
+  border-radius: 12px;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  max-width: 100%;
+}
+
+.spx-split-left img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+/* Colonne de droite : flex + gestion des titres longs */
+.spx-split-right {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.spx-split-right .title {
+  color: white;
+  font-size: 1.05rem;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* coupe proprement les titres très longs */
+}
+
+.spx-split-right .subtitle {
+  color: #c5c5c5;
+  font-size: 0.75rem;
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
