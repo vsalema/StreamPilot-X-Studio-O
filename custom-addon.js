@@ -277,9 +277,13 @@ try {
 } catch(e) {}
 
 
-function spxRenderChannelHeader(title, logoUrl) {
+function spxRenderChannelHeader(title, logoUrl, subtitle) {
   const container = document.getElementById('currentTitle');
   if (!container) return;
+
+  // Valeurs par défaut
+  const safeTitle = title || 'Aucune chaîne';
+  const safeSubtitle = subtitle || 'En direct';
 
   // On vide le contenu actuel
   while (container.firstChild) {
@@ -309,11 +313,11 @@ function spxRenderChannelHeader(title, logoUrl) {
 
   const titleEl = document.createElement('div');
   titleEl.className = 'title';
-  titleEl.textContent = title || 'Aucune chaîne';
+  titleEl.textContent = safeTitle;
 
   const subtitleEl = document.createElement('div');
   subtitleEl.className = 'subtitle';
-  subtitleEl.textContent = 'En direct';
+  subtitleEl.textContent = safeSubtitle;
 
   right.appendChild(titleEl);
   right.appendChild(subtitleEl);
@@ -324,6 +328,5 @@ function spxRenderChannelHeader(title, logoUrl) {
   container.appendChild(box);
 }
 
-// Optionnel : exposer en global (pratique)
+// exposée globalement
 window.spxRenderChannelHeader = spxRenderChannelHeader;
-
