@@ -187,12 +187,23 @@
 
       row.appendChild(fav);
 
-      row.addEventListener('click', function(){
-        if(item.type === 'overlay'){ openOverlay(item.url); }
-        else if(hasFn('loadSource')){ window.loadSource(item.url); }
-      });
+            row.addEventListener('click', function () {
+        // 1) Mettre à jour le titre + mini logo dans currentTitle
+        if (typeof window.spxRenderChannelHeader === 'function') {
+          window.spxRenderChannelHeader(
+            item.title || '(Sans titre)',
+            item.logo || null
+          );
+        }
 
-      // ✅ applique le mini-patch ICI (après handlers, avant append)
+        // 2) Comportement existant : overlay ou source
+        if (item.type === 'overlay') {
+          openOverlay(item.url);
+        } else if (hasFn('loadSource')) {
+          window.loadSource(item.url);
+        }
+      });
+     // ✅ applique le mini-patch ICI (après handlers, avant append)
       enhanceCustomItem(row);
 
       list.appendChild(row);
@@ -262,3 +273,55 @@ try {
     if (typeof renderCustomList === 'function') renderCustomList();
   });
 } catch(e) {}
+
+
+function spxRenderChannelHeader(title, logoUrl) {
+  const container = document.getElementById('currentTitle');
+  if (!container) return;
+
+  // On vide le contenu actuel
+  while (container.firstChild) {
+    container.removeChild(container.firstChild);
+  }
+
+  // Wrapper principal
+  const box = document.createElement('div');
+  box.className = 'spx-split-box';
+
+  // Zone gauche : logo
+  const left = document.createElement('div');
+  left.className = 'spx-split-left';
+
+  if (logoUrl) {
+    const img = document.createElement('img');
+    img.src = logoUrl;
+    img.alt = '';
+    img.loading = 'lazy';
+    img.decoding = 'async';
+    left.appendChild(img);
+  }
+
+  // Zone droite : titre + sous-titre
+  const right = document.createElement('div');
+  right.className = 'spx-split-right';
+
+  const titleEl = document.createElement('div');
+  titleEl.className = 'title';
+  titleEl.textContent = title || 'Aucune chaîne';
+
+  const subtitleEl = document.createElement('div');
+  subtitleEl.className = 'subtitle';
+  subtitleEl.textContent = 'En direct';
+
+  right.appendChild(titleEl);
+  right.appendChild(subtitleEl);
+
+  box.appendChild(left);
+  box.appendChild(right);
+
+  container.appendChild(box);
+}
+
+// Optionnel : exposer en global (pratique)
+window.spxRenderChannelHeader = spxRenderChannelHeader;
+
