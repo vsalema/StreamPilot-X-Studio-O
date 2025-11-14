@@ -174,3 +174,61 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 400);
   }
 });
+
+function spxFindLogoForTitle(title) {
+  if (!title || !Array.isArray(window.CUSTOM_LIST)) return null;
+  const clean = title.trim().toLowerCase();
+
+  // match exact ou "propre"
+  const match = window.CUSTOM_LIST.find((item) => {
+    if (!item || !item.title) return false;
+    return item.title.trim().toLowerCase() === clean;
+  });
+
+  return match && match.logo ? match.logo : null;
+}
+
+function spxEnhanceCurrentTitleWithLogo() {
+  const el = document.getElementById('currentTitle');
+  if (!el) return;
+
+  function applyLogo() {
+    // Si on a déjà injecté un logo, on ne refait rien
+    if (el.querySelector('.spx-title-logo')) return;
+
+    const text = el.textContent.trim();
+    if (!text) return;
+
+    const logoUrl = spxFindLogoForTitle(text);
+    if (!logoUrl) return;
+
+    el.innerHTML = `
+      <img src="${logoUrl}" class="spx-title-logo" alt="" />
+      <span>${text}</span>
+    `;
+  }
+
+  // Première passe au chargement
+  applyLogo();
+
+  // Surveille tout changement (NEXT/PREV, customlist, etc.)
+  const observer = new MutationObserver(() => {
+    // Si quelqu’un remet juste du texte, on re-applique le logo
+    if (!el.querySelector('.spx-title-logo')) {
+      applyLogo();
+    }
+  });
+
+  observer.observe(el, {
+    childList: true,
+    characterData: true,
+    subtree: true
+  });
+}
+
+// Boot
+document.addEventListener('DOMContentLoaded', () => {
+  spxEnhanceCurrentTitleWithLogo();
+});
+
+
