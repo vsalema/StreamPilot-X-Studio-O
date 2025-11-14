@@ -10,7 +10,7 @@
     { title: "TVIA", logo: "https://raw.githubusercontent.com/imagesloads/images/refs/heads/main/img_5ba20c62b2143299.png", type: "overlay", url: "https://vsalema.github.io/tvi-africa/" },
     { title: "SIC",  logo: "https://www.zupimages.net/up/24/13/ax1g.jpg", type: "overlay", url: "https://vsalema.github.io/sic/" },
     { title: "CNN",  logo: "https://e1.pngegg.com/pngimages/206/434/png-clipart-logo-cnn-actualites-logo-de-nbc-medias-texte-rouge-ligne.png", type: "overlay", url: "https://vsalema.github.io/CNN/" },
-    { title: "RTPN", logo: "https://raw.githubusercontent.com/imagesloads/images/refs/heads/main/img_378039629532c486.png", type: "overlay", url: "https://streaming-live.rtp.pt/livetvhlsDVR/rtpnHDdvr.smil/chunklist_b2540000_DVR_slpor.m3u8" },
+    { title: "RTPN", logo: "https://raw.githubusercontent.com/imagesloads/images/refs/heads/main/img_378039629532c486.png", type: "overlay", url: "https://streaming-live.rtp.pt/livetvhlsDVR/rtpnHDdvr.smil/playlist.m3u8?DVR" },
     { title: "RTPI", logo: "https://www.atelevisao.com/wp-content/uploads/2012/03/RTP-Internacional-Nova-Imagem.jpg", type: "overlay", url: "https://vsalema.github.io/play/?https://streaming-live.rtp.pt/liverepeater/rtpi.smil/playlist.m3u8" },
     { title: "CANAL+",  logo: "https://1000logos.net/wp-content/uploads/2023/03/Canal-Logo-1984-768x432.png", type: "overlay", url: "//popcdn.day/go.php?stream=CANALPLFR" },
     { title: "CANAL+F", logo: "https://upload.wikimedia.org/wikipedia/fr/3/3b/C%2B_Foot.png", type: "overlay", url: "//popcdn.day/go.php?stream=FOOTPLUSFR" },
