@@ -1193,4 +1193,24 @@ a:focus-visible,
     font-size: 0.7rem;
   }
 }
+/* Pulse doux pour le logo principal */
+.spx-main-logo {
+  animation: spxMainLogoPulse 2.4s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes spxMainLogoPulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.06);
+    opacity: 0.92;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
 
