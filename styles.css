@@ -1181,7 +1181,7 @@ a:focus-visible,
   }
 
   .spx-split-left img {
-    width: 55px;
+    width: 30px;
     height: 30px;
   }
 
@@ -1245,4 +1245,9 @@ a:focus-visible,
     font-size: 0.7rem;
   }
 }
-
+@media (max-width: 600px) {
+  .spx-split-left img {
+    width: 55px;
+    height: 30px;
+  }
+}
