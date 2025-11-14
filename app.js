@@ -486,6 +486,8 @@ samples.forEach(s => {
 });
 
 const overlayLinks = [
+  { label: 'TESTE',  url: 'https://vsalema.github.io/play/?https://clouding.wideiptv.top/CMTVPT/index.fmp4.m3u8?token=806e693478d9825ebcbe7e02c63b0118adab4f31-73bc83493a9f2ce2f1b9ee940043bc26-1763164955-1763154155
+  ' },
   { label: 'TVPT4',  url: 'https://vsalema.github.io/tvpt4/' },
   { label: 'Tous-les-film',url: 'https://vsalema.github.io/Tous-les-film/' },
   { label: 'Ancien-Film',url: 'https://vsalema.github.io/Ancien-Film/' },
