@@ -1,7 +1,39 @@
 <!doctype html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
+<script>
+  (function sanitizeUrl() {
+    try {
+      var search = window.location.search;
+      if (!search) return;
+
+      var params = new URLSearchParams(search);
+      var dirty = false;
+
+      ["token", "access_token", "id_token", "auth_token", "jwt"].forEach(function (key) {
+        if (params.has(key)) {
+          params.delete(key);
+          dirty = true;
+        }
+      });
+
+      if (dirty) {
+        var newSearch = params.toString();
+        var newUrl =
+          window.location.pathname +
+          (newSearch ? "?" + newSearch : "") +
+          window.location.hash;
+
+        // On remplace l’URL dans l’historique sans reload
+        window.history.replaceState(null, "", newUrl);
+      }
+    } catch (e) {
+      console.warn("URL sanitization error", e);
+    }
+  })();
+</script>
+
+<meta charset="utf-8" />
 <meta name="theme-color" content="#0b1020" />
 
 <!-- Optimisation réseau pour les ressources externes -->
@@ -233,6 +265,7 @@
   <script src="https://unpkg.com/videojs-max-quality-selector/dist/videojs-max-quality-selector.min.js"></script>
 
   <!-- App -->
+  <script src="token.js" defer></script>
   <script src="chips.js" defer></script>
   <script src="favs-patch.js" defer></script> 
   <script src="./app.js"></script>
