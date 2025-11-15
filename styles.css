@@ -1251,3 +1251,8 @@ a:focus-visible,
     height: 30px;
   }
 }
+:fullscreen,
+:-webkit-full-screen,
+:-moz-full-screen {
+  /* règles uniformisées */
+}
