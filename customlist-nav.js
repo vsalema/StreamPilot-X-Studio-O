@@ -8,9 +8,6 @@ function scrollActiveIntoView(el){
     : { behavior: 'smooth', block: 'nearest', inline: 'nearest' };
   el.scrollIntoView(opts);
 }
-
-
-
 // customlist-nav.js
 (function () {
   // ------- Helpers DOM -------
@@ -71,8 +68,7 @@ function scrollActiveIntoView(el){
       if (rows().length) playAt(0);
     }
   };
-
-  // ---- Interception Prev/Next quand la customList est ouverte ----
+// ---- Interception Prev/Next quand la customList est ouverte ----
   const onPrev = (e) => {
     if (!isCustomOpen()) return;
     e.preventDefault(); e.stopImmediatePropagation();
