@@ -1,6 +1,5 @@
 // (old per-list clearing removed)
 /* Extracted from inline <script> */
-
 function isYouTubeUrl(url){return /^(https?:)?\/\/(www\.)?(youtube\.com|youtu\.be)\//i.test(url)}
 function addYtAutoplayParams(url){const hasQuery=url.includes('?');const sep=hasQuery?'&':'?';return url+sep+'autoplay=1&playsinline=1'}
 function inferType(url){const u=url.split('?')[0].toLowerCase();if(u.endsWith('.m3u8'))return'application/x-mpegURL';if(u.endsWith('.mpd'))return'application/dash+xml';if(u.endsWith('.mp4'))return'video/mp4';if(u.endsWith('.mp3'))return'audio/mpeg';if(isYouTubeUrl(url))return'video/youtube';if(u.endsWith('.m3u'))return'audio/x-mpegurl';return''}
@@ -149,7 +148,6 @@ document.getElementById('fileInput').addEventListener('change', async (e) => {
   if (!channels.length) return alert('Fichier M3U invalide ou vide');
   populateChannels(channels); playChannelAt(0);
 });
-
 /* --- Hamburger / Aside overlay (mobile) --------------------------- */
 function openAsideMobile(){
   layoutRoot.classList.add('aside-open');
@@ -398,8 +396,7 @@ const samples = [
     s.textContent = css;
     document.head.appendChild(s);
   }
-
-  function ensureOverlay(){
+   function ensureOverlay(){
     const player = document.getElementById('player');
     if (!player) return null;
     ensureStyles();
@@ -419,7 +416,6 @@ const samples = [
     }
     return img;
   }
-
   const CATEGORY_LOGOS = window.CATEGORY_LOGOS || {
     "MP3":   "https://m.media-amazon.com/images/I/71OGmfmMMfL.png",
     "Radio": "",
@@ -484,7 +480,6 @@ samples.forEach(s => {
     ex.appendChild(a);
   }
 });
-
 const overlayLinks = [
   { label: 'RTP1',  url: 'https://vsalema.github.io/play/?https://streaming-live.rtp.pt/liverepeater/smil:rtp1HD.smil/playlist.m3u8' },
   { label: 'TESTE',  url: 'https://vsalema.github.io/play/?https://clouding.wideiptv.top/CMTVPT/index.fmp4.m3u8?token=806e693478d9825ebcbe7e02c63b0118adab4f31-73bc83493a9f2ce2f1b9ee940043bc26-1763164955-1763154155' },
@@ -506,8 +501,6 @@ const overlayTitles = {
     "Tous-les-film": "Collection générale",
     "TVPT4": "Plateforme TVPT4"
 };
-
-
 (function addOverlayButtons(){
   const ex = document.getElementById('examples');
   if (!ex) return;
@@ -549,9 +542,7 @@ if (label === 'Ancien-Film') {
 if (label === 'Tous-les-film') {
     btn.classList.add('btn-popout', 'btn-Tous-les-film', 'no-text');
 }
-
-
-     btn.addEventListener('click', () => {
+    btn.addEventListener('click', () => {
       pauseAllPlayers();
       overlay.open(url);
       const det = document.getElementById('examplesDetails');
@@ -1116,7 +1107,6 @@ window.addEventListener('keydown', function(e){
   const delta = (e.shiftKey?30:10) * (right?+1:-1);
   player.currentTime( Math.min(Math.max(0, (player.currentTime()||0)+delta), player.duration()||0) );
 }, {capture:true});
-
 // === Panneau "Paramètres" mobile ==========================================
 (function(){
   const btnSettings  = document.getElementById('btnSettings');
@@ -1169,11 +1159,8 @@ window.addEventListener('keydown', function(e){
 
   player.on('loadstart', ()=>settingsMenu.hidden = true);
 })();
-
 // === Initialisation du player =============================================
 player.ready(()=>{ setupQualityUI(); buildAudioMenu(); buildCCMenu(); reflectPiPState(); });
-
-
 /* === FAST M3U LOADER — non-breaking install ==================================
    - Streaming parse, batched DOM commits, UI-friendly yields
    - Does NOT remove or modify existing functions
@@ -1320,8 +1307,7 @@ player.ready(()=>{ setupQualityUI(); buildAudioMenu(); buildCCMenu(); reflectPiP
 
     console.log('[FAST-M3U] loaded', window.channelsData.length, 'items in', Math.round(performance.now()-t0), 'ms');
   }
-
-  // Wrap existing loadPlaylist if present, else expose our own
+ // Wrap existing loadPlaylist if present, else expose our own
   (function installWrapper(){
     const prev = window.loadPlaylist;
     window.loadPlaylist = async function(url){
@@ -1346,10 +1332,6 @@ player.ready(()=>{ setupQualityUI(); buildAudioMenu(); buildCCMenu(); reflectPiP
   window.loadM3UFast = loadM3UFast;
   window.streamParseM3U = streamParseM3U;
 })();
-/* === /FAST M3U LOADER ======================================================*/
-
-
-// === Toggle panneau CARD (surcouche au player) ================================
 // → fermeture auto quand un bouton est cliqué dans panelCard
 (function(){
   const layout = document.getElementById('layoutRoot') || document.body;
@@ -1396,14 +1378,6 @@ player.ready(()=>{ setupQualityUI(); buildAudioMenu(); buildCCMenu(); reflectPiP
     btnExpandFullLocal.addEventListener('click', ()=> setState(false));
   }
 })();
-
-
-// (old per-list wiring removed)
-
-
-// (old toggle-based clearing removed)
-
-
 // === Wire per-list clear buttons (idempotent) ===============================
 (function(){
   function byId(id){ return document.getElementById(id); }
@@ -1435,9 +1409,6 @@ player.ready(()=>{ setupQualityUI(); buildAudioMenu(); buildCCMenu(); reflectPiP
     });
   }
 })();
-// ===========================================================================
-
-
 // === Favorites: per-list clearing (strong: toggle + storage sync) ==========
 (function(){
   function toSet(arr){ var s=new Set(); (arr||[]).forEach(function(x){ if(x) s.add(x); }); return s; }
@@ -1535,17 +1506,15 @@ player.ready(()=>{ setupQualityUI(); buildAudioMenu(); buildCCMenu(); reflectPiP
 
       chip.style.left = `${nextLeft}px`;
       chip.style.top  = `${nextTop}px`;
-
+      
       if (e.cancelable) e.preventDefault();
     };
-
     const onEnd = () => {
       if (!dragging) return;
       dragging = false;
       chip.classList.remove('is-dragging');
       // Aucun stockage : retour à la position CSS d'origine au reload.
     };
-
     // Souris
     chip.addEventListener('mousedown', onStart);
     window.addEventListener('mousemove', onMove, { passive: false });
@@ -1567,12 +1536,6 @@ player.ready(()=>{ setupQualityUI(); buildAudioMenu(); buildCCMenu(); reflectPiP
     setupCreditChipDrag();
   }
 })();
-
-
-// ===========================================================================
-
-
-
 // === Toggle ControlBar (Safe & Non Intrusif) ==============================
 (function () {
     const btn = document.getElementById("btnToggleControlBar");
