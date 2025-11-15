@@ -2,7 +2,7 @@
   // Configuration initiale: à éditer par l'utilisateur
   window.CUSTOM_LIST = window.CUSTOM_LIST || [
     { title: "R.Alfa",  logo: "https://upload.wikimedia.org/wikipedia/commons/4/4a/Radio_Alfa.png", type: "overlay", url: "https://vsalema.github.io/radio-alfa-4/" },
-    { title: "TF1",  logo: "https://assets-fr.imgfoot.com/media/cache/150x150/tf1-671bb354bb372.png", type: "overlay", url: "https://tv.free.fr/home/channels/536/play" },
+    { title: "TF1",  logo: "https://assets-fr.imgfoot.com/media/cache/150x150/tf1-671bb354bb372.png", type: "overlay", url: "https://vsalema.github.io/play/?https://raw.githubusercontent.com/mikekaprielian/rtnaodhor93n398/main/fr/videotf1.m3u8" },
     { title: "CMTV", logo: "https://cdn.brandfetch.io/idaBgpGjjj/w/446/h/223/theme/dark/logo.png?c=1dxbfHSJFAPEGdCLU4o5B", type: "overlay", url: "//popcdn.day/player.php?stream=CMTVPT" },
     { title: "TVI",  logo: "https://upload.wikimedia.org/wikipedia/fr/6/63/TVI_logo_2017.png", type: "overlay", url: "https://vsalema.github.io/tvi2/" },
     { title: "TVIR", logo: "https://www.zupimages.net/up/24/14/xplw.jpg", type: "overlay", url: "https://vsalema.github.io/tvi-reality/" },
@@ -10,6 +10,11 @@
     { title: "TVIA", logo: "https://raw.githubusercontent.com/imagesloads/images/refs/heads/main/img_5ba20c62b2143299.png", type: "overlay", url: "https://vsalema.github.io/tvi-africa/" },
     { title: "SIC",  logo: "https://www.zupimages.net/up/24/13/ax1g.jpg", type: "overlay", url: "https://vsalema.github.io/sic/" },
     { title: "CNN",  logo: "https://e1.pngegg.com/pngimages/206/434/png-clipart-logo-cnn-actualites-logo-de-nbc-medias-texte-rouge-ligne.png", type: "overlay", url: "https://vsalema.github.io/CNN/" },
+    
+    
+    
+    
+    
     { title: "RTP1", logo: "https://media.rtp.pt/extra/wp-content/uploads/sites/22/2021/12/thumbnail_image010-860x507-1640950102.jpg", type: "overlay", url: "https://vsalema.github.io/play/?https://streaming-live.rtp.pt/liverepeater/smil:rtp1HD.smil/playlist.m3u8" },
     { title: "RTPN", logo: "https://raw.githubusercontent.com/imagesloads/images/refs/heads/main/img_378039629532c486.png", type: "overlay", url: "https://vsalema.github.io/play/?https://streaming-live.rtp.pt/livetvhlsDVR/rtpnHDdvr.smil/playlist.m3u8?DVR" },
     { title: "RTPI", logo: "https://www.atelevisao.com/wp-content/uploads/2012/03/RTP-Internacional-Nova-Imagem.jpg", type: "overlay", url: "https://vsalema.github.io/play/?https://streaming-live.rtp.pt/liverepeater/rtpi.smil/playlist.m3u8" },
