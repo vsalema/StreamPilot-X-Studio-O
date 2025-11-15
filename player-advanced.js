@@ -1,6 +1,5 @@
 // player-advanced.js
 // Optimisation init player + overlay iframe lazy, sans toucher au CORS ni aux URLs absolues
-
 // --- Détection du type de flux (HLS, DASH, YouTube, fallback) ---
 function spxDetectSourceConfig(url) {
   const lower = url.trim().toLowerCase();
@@ -48,7 +47,6 @@ function spxInitCorePlayerIfNeeded() {
 
   window.spxPlayer = player;
 }
-
 // --- Wiring URL input + bouton, en mode "soft" pour éviter de casser app.js ---
 function spxWireUrlLoader() {
   const player = window.spxPlayer;
@@ -83,7 +81,6 @@ function spxWireUrlLoader() {
     urlInput.dataset.spxBound = '1';
   }
 }
-
 // --- Overlay iframe lazy sur le player ---
 // -> utilise le CSS existant (#playerOverlayLayer, #playerOverlayClose)
 function spxInitOverlayIframe() {
