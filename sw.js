@@ -7,6 +7,7 @@ const ASSETS = [
   "./app.js",
   "./favs-patch.js",
   "./custom-addon.js",
+  "./player-advanced.js",
   "./customlist-nav.js"
 ];
 
