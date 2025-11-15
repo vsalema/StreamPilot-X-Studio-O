@@ -1251,8 +1251,34 @@ a:focus-visible,
     height: 30px;
   }
 }
-:fullscreen,
-:-webkit-full-screen,
-:-moz-full-screen {
-  /* règles uniformisées */
+/* === Fullscreen SPX — version moderne & design-system compatible === */
+
+:fullscreen {
+  background: #000;                          /* fond propre pour éviter le flash */
+  display: block;
+}
+
+/* Player en plein écran : cohérence avec ton thème */
+#player.video-js:fullscreen {
+  border-radius: 0;
+  background: #000;
+  box-shadow: none;
+}
+
+/* Controlbar adaptée au fullscreen */
+#controlBar:fullscreen {
+  padding-bottom: calc(8px + env(safe-area-inset-bottom));
+}
+
+/* Wrapper fullscreen : supprime tout rognage + max occupation */
+.wrap:fullscreen {
+  overflow: hidden !important;
+  height: 100vh !important;
+  grid-template-rows: 1fr auto auto;
+}
+
+/* Optionnel : cacher le creditChip en plein écran si tu veux */
+#creditChip:fullscreen {
+  opacity: 0;
+  pointer-events: none;
 }
