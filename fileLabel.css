@@ -1,0 +1,93 @@
+:root {
+  --bg-crystal: radial-gradient(1200px 800px at 10% -10%, #1e2636 0%, #0b0f18 45%, #06080e 100%);
+  --glass-bg: rgba(255,255,255,0.08);
+  --glass-stroke: rgba(255,255,255,0.18);
+  --glass-hover: rgba(255,255,255,0.12);
+  --glass-strong: rgba(255,255,255,0.16);
+  --blur: 14px;
+
+  --accent: #7dd3fc;
+  --accent-2: #38bdf8;
+  --accent-glow: 0 0 18px rgba(125,211,252,.45);
+
+  --text-strong: #edf2f7;
+  --text-soft: #bac7d3;
+
+  --stroke: 1px solid var(--glass-stroke);
+  --shadow-1: 0 10px 30px rgba(0,0,0,.35);
+  --shadow-2: 0 30px 60px rgba(0,0,0,.35);
+}
+
+
+button, .nowbar a, .nowbar button, .fileLabel {
+  background: linear-gradient(180deg, var(--glass-strong), rgba(255,255,255,0.04)) !important;
+  border: var(--stroke) !important;
+  color: var(--text-strong) !important;
+  backdrop-filter: blur(calc(var(--blur) - 4px)) !important;
+  -webkit-backdrop-filter: blur(calc(var(--blur) - 4px)) !important;
+  box-shadow: var(--shadow-1);
+}
+button:hover, .nowbar a:hover, .nowbar button:hover, .fileLabel:hover {
+  border-color: var(--accent-2) !important;
+  box-shadow: var(--accent-glow), var(--shadow-1);
+}
+
+:root {
+  --bg: #0b0b0b;
+  --bg-alt: #111;
+  --text: #eee;
+  --border: #222;
+  --accent: #3b82f6;
+}
+body.light {
+  --bg: #fafafa;
+  --bg-alt: #fff;
+  --text: #111;
+  --border: #ccc;
+  --accent: #2563eb;
+}
+* { box-sizing: border-box; font-family: 'Inter', system-ui, sans-serif; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.fileLabel {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--bg); color: var(--text);
+  border: 1px solid var(--border); border-radius: 8px; padding: 6px 10px; cursor: pointer;
+}
+.fileLabel input { display:none; }
+
+
+button {
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  background: var(--accent);
+  color: white;
+  font-weight: 600;
+}
+button:hover { opacity: 0.9; }
+.fileLabel {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  padding: 8px 10px;
+  border-radius: 10px;
+  background: #4252ff;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  max-width: 140px;     /* limite la largeur */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.fileLabel input[type="file"] {
+  display: none;
+}
+
