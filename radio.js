@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!btnRadioFM) return;
 
   btnRadioFM.addEventListener("click", () => {
-    if (!window.radioAlfa || !window.radioAlfa.url) {
+    if (!window.R.Alfa || !window.R.Alfa.url) {
       alert("⛔ Radio Alfa n'est pas définie dans custom-addon.js");
       return;
     }
@@ -16,11 +16,11 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!srcInput || !btnLoad) return;
 
     // On injecte l’URL de Radio Alfa
-    srcInput.value = window.radioAlfa.url;
+    srcInput.value = window.R.Alfa.url;
 
     // On met le titre dans la barre centrale
-    if (currentTitle && window.radioAlfa.name) {
-      currentTitle.textContent = window.radioAlfa.name;
+    if (currentTitle && window.R.Alfa.name) {
+      currentTitle.textContent = window.R.Alfa.name;
     }
 
     // On lance la lecture
