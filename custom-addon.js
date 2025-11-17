@@ -2,7 +2,6 @@
   // Configuration initiale: à éditer par l'utilisateur
   window.CUSTOM_LIST = window.CUSTOM_LIST || [
     { title: "TF1",  logo: "https://assets-fr.imgfoot.com/media/cache/150x150/tf1-671bb354bb372.png", type: "overlay", url: "https://vsalema.github.io/play/?https://raw.githubusercontent.com/mikekaprielian/rtnaodhor93n398/main/fr/videotf1.m3u8" },
-    { title: "R.Alfa",  logo: "https://upload.wikimedia.org/wikipedia/commons/4/4a/Radio_Alfa.png", type: "overlay", url: "https://vsalema.github.io/radio-alfa-5/" },
     { title: "CMTV", logo: "https://cdn.brandfetch.io/idaBgpGjjj/w/446/h/223/theme/dark/logo.png?c=1dxbfHSJFAPEGdCLU4o5B", type: "overlay", url: "//popcdn.day/player.php?stream=CMTVPT" },
     { title: "TVI",  logo: "https://upload.wikimedia.org/wikipedia/fr/6/63/TVI_logo_2017.png", type: "overlay", url: "https://vsalema.github.io/tvi2/" },
     { title: "TVIR", logo: "https://www.zupimages.net/up/24/14/xplw.jpg", type: "overlay", url: "https://vsalema.github.io/tvi-reality/" },
@@ -29,7 +28,8 @@
     { title: "DAZN 2 PT",  logo: "https://upload.wikimedia.org/wikipedia/commons/7/71/DAZN_logo.svg", type: "overlay", url: "//popcdn.day/go.php?stream=ELEVEN2" },
     { title: "DAZN 3 PT",  logo: "https://upload.wikimedia.org/wikipedia/commons/7/71/DAZN_logo.svg", type: "overlay", url: "//popcdn.day/go.php?stream=ELEVEN3" },
     { title: "DAZN 4 PT",  logo: "https://upload.wikimedia.org/wikipedia/commons/7/71/DAZN_logo.svg", type: "overlay", url: "//popcdn.day/go.php?stream=ELEVEN4" },
-    { title: "DAZN 5 PT",  logo: "https://upload.wikimedia.org/wikipedia/commons/7/71/DAZN_logo.svg", type: "overlay", url: "//popcdn.day/go.php?stream=ELEVEN5" }
+    { title: "DAZN 5 PT",  logo: "https://upload.wikimedia.org/wikipedia/commons/7/71/DAZN_logo.svg", type: "overlay", url: "//popcdn.day/go.php?stream=ELEVEN5" },
+    { title: "R.Alfa",  logo: "https://upload.wikimedia.org/wikipedia/commons/4/4a/Radio_Alfa.png", type: "overlay", url: "https://vsalema.github.io/radio-alfa-5/" }
   ];
 })();
   
