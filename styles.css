@@ -1305,3 +1305,30 @@ a:focus-visible,
     font-size: 11px;
   }
 }
+/* Logo radio – adaptation tablettes */
+@media (max-width: 780px) {
+  .station-logo {
+    width: 45%;
+    max-width: 200px;
+    top: 42%;              /* un peu plus haut */
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Logo radio – adaptation smartphones */
+@media (max-width: 480px) {
+  .station-logo {
+    width: 50%;            /* un peu plus petit mais lisible */
+    max-width: 160px;
+    top: 40%;              /* remonte un peu pour laisser de la place au texte */
+  }
+
+  .station-title {
+    margin-top: 40px;      /* évite que le titre chevauche le logo */
+    font-size: 1.1rem;
+  }
+
+  .station-meta {
+    font-size: 0.8rem;
+  }
+}
