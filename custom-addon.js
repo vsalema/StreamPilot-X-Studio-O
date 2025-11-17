@@ -251,9 +251,6 @@
   }
 })();
 
-
-})();
-
 // --- Force ouverture de channelList quand on clique un exemple du menu ---
 document.addEventListener("click", (e) => {
   const btn = e.target.closest("#examples button, #examples .item, #examples .example-btn");
