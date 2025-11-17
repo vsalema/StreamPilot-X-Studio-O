@@ -331,3 +331,13 @@ function spxRenderChannelHeader(title, logoUrl, subtitle) {
 
 // exposée globalement
 window.spxRenderChannelHeader = spxRenderChannelHeader;
+
+// === Bouton Radio : Ouvre l’overlay avec R.Alfa ===
+document.getElementById("btnradio").addEventListener("click", () => {
+    // URL à ouvrir dans l’overlay
+    const radioURL = "https://vsalema.github.io/radio-alfa-5/"; // <-- Mets ton URL ici
+
+    // Utilise ta fonction d’overlay existante
+    openOverlay(radioURL, "R.Alfa");
+});
+
