@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <rect width="100" height="100" fill="white"/>
+  
+  <!-- Pin -->
+  <path d="M50 10c-11 0-20 9-20 20 0 15 20 40 20 40s20-25 20-40c0-11-9-20-20-20z" fill="#39b6ff"/>
+  
+  <!-- Play -->
+  <polygon points="45,30 45,50 60,40" fill="white"/>
+  
+  <!-- X -->
+  <text x="65" y="75" font-family="Arial, sans-serif" font-size="40" font-weight="700" fill="#39b6ff">
+    X
+  </text>
+</svg>
