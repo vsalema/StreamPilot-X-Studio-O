@@ -10,7 +10,8 @@
 <link rel="preconnect" href="https://raw.githubusercontent.com">
 
 <!-- Prioriser ton CSS principal -->
-<link rel="preload" href="./styles.css" as="style" />
+  <link rel="preload" href="./styles.css" as="style" />
+  <link rel="stylesheet" href="./styles.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -23,10 +24,13 @@
   <link rel="apple-touch-icon" sizes="180x180" href="https://vsalema.github.io/StreamPilot-X-Studio-O/icons/apple-touch-icon.png" />
     <link rel="manifest" href="https://vsalema.github.io/StreamPilot-X-Studio-O/icons/site.webmanifest" />
   <title>StreamPilot X</title>
-  <link href="./fileLabel.css" rel="stylesheet" />
-  <link href="https://unpkg.com/video.js@8/dist/video-js.css" rel="stylesheet" />
-  <link href="./styles.css" rel="stylesheet" />
-<style>
+  
+  <!-- CSS Video.js (préchargé pour éviter le blocage du rendu) -->
+<link rel="preload" href="https://unpkg.com/video.js@8/dist/video-js.css" as="style" />
+<link rel="stylesheet" href="https://unpkg.com/video.js@8/dist/video-js.css" />
+<!-- FileLabel : faible impact → chargement non-bloquant -->
+<link rel="stylesheet" href="./fileLabel.css" media="print" onload="this.media='all'" />
+  <style>
 #player.video-js {
  background: var(--bg);
  border-radius: 0.375rem;
