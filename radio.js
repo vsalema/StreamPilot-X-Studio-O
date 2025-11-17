@@ -1,32 +1,32 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Bouton 📻 dans la barre du player
-  const btnRadioFM = document.querySelector('#controlBar #radiofm[title="Radio FMt"]');
-  if (!btnRadioFM) return;
 
-  btnRadioFM.addEventListener("click", () => {
-    if (!window.R.Alfa || !window.R.Alfa.url) {
-      alert("⛔ Radio Alfa n'est pas définie dans custom-addon.js");
+  const btnRadio = document.querySelector('#btnRefreshPlaylist[title="Radio FMt"]');
+  if (!btnRadio) return;
+
+  btnRadio.addEventListener("click", () => {
+    // Récupérer la customList
+    const customList = window.customListData || [];
+
+    // Trouver "Alfa" dans la liste
+    const alfa = customList.find(item =>
+      item.name && item.name.toLowerCase().includes("alfa")
+    );
+
+    if (!alfa) {
+      alert("⛔ La chaîne Alfa n'est pas dans la customList.");
       return;
     }
 
+    // Charger Alfa dans le player
     const srcInput = document.getElementById("srcInput");
-    const btnLoad  = document.getElementById("btnLoad");
-    const currentTitle = document.getElementById("currentTitle");
+    const btnLoad = document.getElementById("btnLoad");
 
     if (!srcInput || !btnLoad) return;
 
-    // On injecte l’URL de Radio Alfa
-    srcInput.value = window.R.Alfa.url;
+    srcInput.value = alfa.url;   // Injecter l’URL
+    btnLoad.click();             // Simuler le clic pour charger
 
-    // On met le titre dans la barre centrale
-    if (currentTitle && window.R.Alfa.name) {
-      currentTitle.textContent = window.R.Alfa.name;
-    }
-
-    // On lance la lecture
-    btnLoad.click();
-
-    // On ouvre l’overlay/menu si tu t’en sers comme “overlay”
+    // Ouvrir l’overlay si nécessaire
     const examplesDetails = document.getElementById("examplesDetails");
     if (examplesDetails && !examplesDetails.open) {
       examplesDetails.open = true;
