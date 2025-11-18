@@ -481,6 +481,9 @@ samples.forEach(s => {
   }
 });
 const overlayLinks = [
+  
+  
+  { label: 'tf1sef',url: 'https://vsalema.github.io/play/?https://sv1.data-stream.top/89db88bf47808aa1acb5082fa50d6e1d5dde39e257a907eaa26d0a7677e3408c/hls/seriefilmes.m3u8' },
   { label: 'Tous-les-film',url: 'https://vsalema.github.io/Tous-les-film/' },
   { label: 'Ancien-Film',url: 'https://vsalema.github.io/Ancien-Film/' },
   { label: 'Superhero',url: 'https://vsalema.github.io/Superhero/' },
