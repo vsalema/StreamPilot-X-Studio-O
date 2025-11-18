@@ -1,7 +1,7 @@
 (function(){
   // Configuration initiale: à éditer par l'utilisateur
   window.CUSTOM_LIST = window.CUSTOM_LIST || [
-    { title: "TF1",  logo: "https://assets-fr.imgfoot.com/media/cache/150x150/tf1-671bb354bb372.png", type: "overlay", url: "https://vsalema.github.io/play/?https://raw.githubusercontent.com/mikekaprielian/rtnaodhor93n398/main/fr/videotf1.m3u8" },
+    { title: "TF1",  logo: "/logos/tf1.png", type: "overlay", url: "https://vsalema.github.io/play/?https://raw.githubusercontent.com/mikekaprielian/rtnaodhor93n398/main/fr/videotf1.m3u8" },
     { title: "CMTV", logo: "https://cdn.brandfetch.io/idaBgpGjjj/w/446/h/223/theme/dark/logo.png?c=1dxbfHSJFAPEGdCLU4o5B", type: "overlay", url: "//popcdn.day/player.php?stream=CMTVPT" },
     { title: "TVI",  logo: "https://upload.wikimedia.org/wikipedia/fr/6/63/TVI_logo_2017.png", type: "overlay", url: "https://vsalema.github.io/tvi2/" },
     { title: "TVIR", logo: "https://www.zupimages.net/up/24/14/xplw.jpg", type: "overlay", url: "https://vsalema.github.io/tvi-reality/" },
