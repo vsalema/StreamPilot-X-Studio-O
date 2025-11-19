@@ -33,7 +33,7 @@ button:hover, .nowbar a:hover, .nowbar button:hover, .fileLabel:hover {
 }
 
 :root {
-  --bg: #0b0b0b;
+  --bg-crystal: #0b0b0b;
   --bg-alt: #111;
   --text: #eee;
   --border: #222;
