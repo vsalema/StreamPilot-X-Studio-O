@@ -1,0 +1,907 @@
+/* Extracted from inline <style> */
+:root { --bg:#0b1020; --fg:#e6e8ef; --card:#121a33; --border:#1f2a4c; --accent:#4252ff; --muted:#2a3761; --chip:#263572; --aside:#0d1430; --backdrop:#0008; }
+*{box-sizing:border-box}
+html, body { height: 100dvh; overflow: hidden; }
+body { font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial; margin: 0; background: var(--bg); color: var(--fg); }
+.layout { display: grid; grid-template-columns: 280px minmax(0,1fr); gap: 0; height: 100dvh; align-items: stretch; position: relative; }
+
+/* Plein page (masque l’aside) */
+.layout.fullpage aside{ display:none; }
+.layout.fullpage{ grid-template-columns: 1fr; }
+
+/* Backdrop pour aside mobile */
+#asideBackdrop{
+  position: fixed; inset: 0; background: var(--backdrop);
+  opacity: 0; pointer-events: none; transition: opacity .2s ease;
+  z-index: 60;
+}
+.layout.aside-open #asideBackdrop{ opacity: 1; pointer-events: auto; }
+
+/* même style que les autres boutons de la barre */
+#btnMute{
+  background:#243266;
+  border:1px solid #3a4ba0;
+  padding:8px 12px;
+  border-radius:10px;
+  font-size:13px;
+}
+@media (max-width: 430px) and (min-height: 780px),
+       (max-width: 430px) and (orientation: portrait){
+  #btnMute{ width:36px; height:36px; padding:8px; }
+}
+
+#btnHamburger{
+  position: fixed;
+  top: env(safe-area-inset-top, 10px);
+  left: env(safe-area-inset-left, 10px);
+  z-index: 120;
+  background:#243266;
+  border:1px solid #3a4ba0;
+  color:#fff;
+  border-radius:12px;
+  padding:10px 12px;
+  font-weight:700;
+  line-height:1;
+  cursor:pointer;
+  display:none;
+  pointer-events:auto;
+}
+#btnHamburger[aria-expanded="true"]::after{ content:" ✕"; }
+#btnHamburger[aria-expanded="false"]::after{ content:" ☰"; }
+
+@media (max-width: 960px){
+  #btnHamburger{ display:block; }
+}
+
+aside {
+  border-right: 1px solid var(--border); background: var(--aside); padding: 14px;
+  display: flex; flex-direction: column; overflow: hidden; position: sticky; top: 0;
+}
+.brand { font-weight: 700; font-size: 16px; margin-bottom: 8px; opacity:.9 }
+.aside-row { display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+.group { margin-top: 12px; font-size: 12px; text-transform: uppercase; letter-spacing:.04em; opacity:.7; display:flex; align-items:center; gap:8px; }
+.list { margin-top: 6px; display:flex; flex-direction:column; gap:6px; overflow:auto; min-height:0; }
+
+/* Aside mobile: slide-in overlay */
+@media (max-width: 960px){
+  aside{
+    position: fixed; top: 0; bottom: 0; left: 0; width: min(82vw, 360px);
+    transform: translateX(-102%); transition: transform .2s ease, box-shadow .2s ease;
+    z-index: 80; border-right: 1px solid var(--border);
+    padding-top: calc(14px + env(safe-area-inset-top, 0px));
+  }
+  .layout.aside-open aside{ transform: translateX(0); box-shadow: 10px 0 30px #0008; }
+  .layout.fullpage.aside-open aside{ display: flex; }
+}
+
+.item { display:grid; grid-template-columns: 28px 1fr auto auto auto auto; gap:8px; align-items:center; padding: 8px; background: #0f1736; border: 1px solid #0f1c4b; border-radius: 10px; cursor:pointer; }
+.item:hover{border-color:#2745aa; background:#0f193f}
+.item.active{border-color:var(--accent); box-shadow:0 0 0 1px color-mix(in oklab, var(--accent) 60%, transparent)}
+.logo { width:28px; height:28px; border-radius:6px; object-fit:contain; background:#0b132b }
+.name { font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
+.badge { font-size: 11px; opacity:.7 }
+.fav-btn { border: 1px solid #243266; background:#0e1430; color:#ffd24d; border-radius:8px; padding:4px 8px; font-size:13px; cursor:pointer; }
+.fav-btn[aria-pressed="true"] { background:#2a2140; border-color:#6b5dd6; }
+
+.item .now{ font-size:12px; opacity:0; transition:opacity .25s ease; color:#00ffcc; line-height:1 }
+.item.active .now{ opacity:1; animation:pulseNow 1.2s infinite ease-in-out; text-shadow:0 1px 2px rgba(0,0,0,.5); }
+@keyframes pulseNow { 0%,100%{opacity:.6;transform:scale(1)} 50%{opacity:1;transform:scale(1.25)} }
+
+.status { display:flex; align-items:center; gap:6px; font-size:11px; opacity:.8 }
+.dot { width:8px; height:8px; border-radius:50%; background:#999; box-shadow:0 0 0 1px #0008 inset; }
+.ok{background:#1ecb70}.bad{background:#ff4d4f}.unk{background:#f5c84c}
+
+.verify-summary{ margin-top:8px; font-size:12px; opacity:.85; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+.verify-summary .pill{ background:#0f1630; border:1px solid #1f2a4c; padding:4px 8px; border-radius:999px; }
+.pill{ background:#0f1630; border:1px solid var(--border); padding:4px 8px; border-radius:999px; font-size:11px; }
+
+.wrap {
+  max-width: none; width: 100%; margin: 0; padding: clamp(16px,2vw,24px);
+  height: 100dvh; display: grid; grid-template-rows: auto 1fr auto; gap: 16px;
+  overflow: hidden;
+}
+
+.card {
+  background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.25); position: relative; z-index: 3;
+  overflow: hidden;
+}
+.row { display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center; }
+input[type="url"] { width: 100%; border-radius: 12px; border: 1px solid var(--muted); background: #0f163030; color: var(--fg); padding: 12px 14px; font-size: 14px; }
+button { border: 0; border-radius: 12px; background: var(--accent); color: white; padding: 12px 16px; font-weight: 600; cursor: pointer; }
+button:hover { filter: brightness(1.06); }
+.hint { opacity: .8; font-size: 13px; margin-top: 6px; }
+.grid { display: inline-flex; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 8px; margin-top: 8px; }
+.empty { opacity:.7; font-size:12px; margin-top:8px }
+
+#examplesDetails { margin-top:8px; }
+#examplesDetails > summary{ list-style:none; cursor:pointer; }
+#examplesDetails > summary::-webkit-details-marker{ display:none; }
+#examplesDetails[open]{
+  max-height: 24vh;
+  overflow:auto;
+  border:1px dashed var(--border);
+  border-radius:10px;
+  padding:6px;
+  background:#0f163000;
+}
+
+#player.video-js { width: 100% !important; height: 100% !important; max-width: 100%; border-radius: 12px; background:#000; overflow: hidden; }
+.video-js.vjs-fluid { padding-top: 0 !important; }
+.video-js .vjs-tech { width: 100% !important; height: 100% !important; object-fit: contain; }
+
+/* Control bar container */
+.bar{
+  background:#0f1630;border:1px solid var(--border);border-radius:12px;
+  padding:10px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px; position:relative; flex-wrap:nowrap;
+}
+.bar button{padding:8px 14px;border-radius:10px;font-size:13px;}
+.bar .title{font-size:15px;font-weight:600;max-width:min(420px,45vw);overflow:hidden;white-space:nowrap;text-overflow:ellipsis;text-align:center;}
+
+.favFilter{background:#243266;border:1px solid #3a4ba0;border-radius:10px;padding:8px 12px;font-weight:600;cursor:pointer}
+.favFilter.active{background:#3a4ba0}
+
+details.group-panel{ background:#0c1433; border:1px solid #132259; border-radius:10px; padding:6px 8px; }
+details.group-panel[open] .summary{ border-bottom:1px dashed #1f2a4c; margin-bottom:6px; padding-bottom:6px; }
+.summary{ list-style:none; display:flex; align-items:center; justify-content:space-between; gap:8px; cursor:pointer; user-select:none; font-size:12px; text-transform:uppercase; letter-spacing:.04em; opacity:.85; }
+.summary .count{opacity:.7; font-size:11px}
+.summary .caret{transition:transform .2s ease}
+details[open] .summary .caret{transform:rotate(90deg)}
+
+.ctx { position: fixed; min-width: 200px; background: #0f1630; border: 1px solid #1f2a4c; box-shadow: 0 10px 30px rgba(0,0,0,.35); border-radius: 10px; padding: 6px; z-index: 9999; display: none; }
+.ctx.open { display:block; }
+.ctx-item { display:flex; align-items:center; gap:8px; padding:8px 10px; border-radius:8px; font-size:13px; cursor:pointer; user-select:none; }
+.ctx-item:hover, .ctx-item:focus { outline:none; background:#162048; }
+.ctx-sep { margin:6px 0; height:1px; background:#1f2a4c; border:0; }
+.ctx-kbd { margin-left:auto; opacity:.6; font-size:11px; }
+.ctx .icon { width:16px; height:16px; display:inline-block; text-align:center; }
+
+.dragging { opacity:.6; }
+.drag-over { outline: 2px dashed #3a4ba0; outline-offset: 2px; border-radius: 10px; }
+
+.video-js .vjs-control { position: relative; visibility: hidden; }
+.video-js .vjs-control-bar { background-color: rgba(43, 51, 63, 0); }
+
+#controlBar{ position:relative; }
+
+.qmenu{
+  position:absolute; bottom:100%; right:0; margin-bottom:8px;
+  background:#0f1630; border:1px solid #1f2a4c; border-radius:10px;
+  box-shadow:0 10px 30px rgba(0,0,0,.35); padding:6px; min-width:180px; z-index:30;
+}
+.qitem{
+  display:flex; align-items:center; gap:8px; padding:8px 10px; border-radius:8px;
+  cursor:pointer; font-size:13px; color:var(--fg); background:transparent; transition:background .15s ease;
+}
+.qitem:hover{ background:#162048; }
+.qitem[aria-current="true"]{ background:#1b2a66; }
+.qmeta{ margin-left:auto; opacity:.7; font-size:12px; }
+.qsep{ height:1px; background:#1f2a4c; margin:6px 0; }
+
+@media (max-width: 960px){
+  .layout { grid-template-columns: 1fr; }
+  aside { position: fixed; top:0; border-right:none }
+  .bar .title{ max-width: 50vw; }
+  #examplesDetails[open]{ max-height: 30vh; }
+}   
+
+#channelSearch,
+#sortMode {
+  width: 100%;
+  background: #0f1630;
+  color: var(--fg);
+  border: 1px solid var(--muted);
+  border-radius: 10px;
+  font-size: 13px;
+  padding: 8px 10px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+#channelSearch:focus,
+#sortMode:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px color-mix(in oklab, var(--accent) 60%, transparent);
+}
+
+#sortMode {
+  height: 34px;
+  cursor: pointer;
+  appearance: none;
+  background-image: linear-gradient(to bottom, #121a33, #0f1630);
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px auto;
+}
+
+#clearSearch {
+  border: 1px solid var(--muted);
+  background: #0e1430;
+  color: var(--fg);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 13px;
+  cursor: pointer;
+}
+#clearSearch:hover {
+  border-color: var(--accent);
+  background: #1a2550;
+}
+
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.icon { width: 20px; height: 20px; vertical-align: -2px; }
+.btn-icon { display:inline-flex; align-items:center; gap:8px; }
+
+/* Nouvelle structure de controlbar */
+.bar-left{
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+}
+.bar-left [role="group"]{ display:inline-flex; align-items:center; gap:8px; }
+.bar-left [role="group"] button + button{ margin-left:6px; }
+
+.bar-center{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  max-width: 60vw;
+}
+.bar .title{
+  font-size: 15px;
+  font-weight: 600;
+  max-width: 36vw;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+.btn-icon{ display:inline-flex; align-items:center; gap:8px; }
+.icon{ width:20px; height:20px; vertical-align:-2px; }
+.tool{ position: relative; display:inline-flex; }
+
+/* Zone droite: flex + espacement + wrap */
+.bar-right{
+  display:inline-flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:8px;
+  flex-wrap:nowrap;
+}
+.bar-right .tool > button,
+.bar-right > button{ display:inline-flex; align-items:center; gap:6px; }
+.bar-right .tool + .tool,
+.bar-right .tool + button,
+.bar-right button + .tool,
+.bar-right button + button{ margin-left:6px; }
+
+/* Styles des boutons */
+#btnQuality, #btnAudio, #btnCC, #btnPiP, #btnFS, #btnExpandAside, #btnExpandFull{
+  background:#243266;
+  border:1px solid #3a4ba0;
+  padding:8px 12px;
+  border-radius:10px;
+  font-size:13px;
+}
+
+/* === Overlay iFrame sur le player === */
+#playerOverlayLayer{
+  position:absolute; inset:0;
+  display:none;
+  z-index:30;
+  pointer-events:auto;
+}
+#playerOverlayLayer[hidden]{ display:none; }
+#playerOverlayLayer iframe{
+  position:absolute; inset:0; width:100%; height:100%;
+  border:0; background:#000;
+}
+#playerOverlayClose{
+  position:absolute; top:8px; right:8px;
+  border:0; border-radius:10px; padding:6px 10px;
+  background:#243266; color:#fff; font-weight:600; cursor:pointer;
+}
+
+/* ===== Mini-scrubber VOD ===== */
+.scrubber{
+  margin:10px 0 8px;
+  background:#0f1630;
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:10px 12px;
+  display:flex; align-items:center; gap:18px;
+}
+.scrubber .track{
+  position:relative; flex:1; height:18px;
+  background:#0c1433; border:1px solid #132259; border-radius:999px;
+  overflow:hidden;
+}
+.scrubber .played{ position:absolute; left:0; top:0; bottom:0; background:#4252ff66; pointer-events:none; }
+.scrubber .buffered{ position:absolute; left:0; top:0; bottom:0; background:#ffffff22; pointer-events:none; }
+.scrubber input[type="range"]{
+  position:absolute; inset:0; width:100%; height:100%;
+  appearance:none; background:transparent; cursor:pointer;
+}
+.scrubber input[type="range"]::-webkit-slider-thumb{
+  appearance:none; width:12px; height:12px; border-radius:50%;
+  background:#fff; box-shadow:0 0 0 2px #4252ff; border:0; margin-top:-2px;
+}
+.scrubber input[type="range"]::-moz-range-thumb{
+  width:12px; height:12px; border-radius:50%;
+  background:#fff; box-shadow:0 0 0 2px #4252ff; border:0;
+}
+.scrubber .time{ font-size:12px; opacity:.85; white-space:nowrap; }
+.scrubber button{
+  background:#243266; border:1px solid #3a4ba0; padding:6px 10px; border-radius:10px; font-size:12px;
+}
+.scrubber[data-live="true"]{ opacity:.6; pointer-events:none; }
+@media (max-width:720px){ .scrubber .time{display:none} }
+
+/* === ScrubberBar ultra-minimale ===================================== */
+#scrubberBar,
+.scrubber {
+  padding: 2px 6px;
+  margin: 2px 0;
+  gap: 4px;
+  align-items: center;
+  min-height: 0;
+}
+.scrubber button,
+#scrubberBar button {
+  padding: 2px 6px;
+  font-size: 10px;
+  line-height: 1;
+  border-radius: 6px;
+}
+.scrubber .time,
+#scrubberBar .time {
+  font-size: 10px;
+  line-height: 1;
+  opacity: 0.8;
+}
+.scrubber .track,
+#scrubberBar .track {
+  height: 4px;
+  min-height: 0;
+}
+.scrubber input[type="range"],
+#scrubberBar input[type="range"] {
+  height: 4px;
+  min-height: 0;
+}
+.scrubber input[type="range"]::-webkit-slider-thumb,
+#scrubberBar input[type="range"]::-webkit-slider-thumb {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fff;
+  margin-top: -2px;
+}
+.scrubber input[type="range"]::-moz-range-thumb,
+#scrubberBar input[type="range"]::-moz-range-thumb {
+  width: 8px;
+  height: 18px;
+  border-radius: 50%;
+  background: #0ebeff;
+}
+.scrubber .played,
+.scrubber .buffered {
+  height: 100%;
+}
+
+/* ====== Controlbar responsive + anti-chevauchement (Nettoyé) ====== */
+.bar{ flex-wrap: wrap; }
+.bar-right{
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  flex: 1 1 auto;
+  min-width: 0;
+  flex-wrap: nowrap;
+}
+.bar-right .tool > button,
+.bar-right > button{
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.bar-right .tool + .tool,
+.bar-right .tool + button,
+.bar-right button + .tool,
+.bar-right button + button{ margin-left: 6px; }
+
+#btnQuality, #btnAudio, #btnCC, #btnPiP, #btnFS, #btnExpandAside, #btnExpandFull, #btnMute{
+  background:#243266; border:1px solid #3a4ba0; padding:8px 12px; border-radius:10px; font-size:13px;
+}
+
+@media (max-width: 980px), (max-height: 440px){
+  .bar{ padding: 8px 12px; gap: 8px; }
+  .bar-center{
+    position: static; transform: none; order: 3; width: 100%;
+    max-width: 100%; display: inline-flex; justify-content: center; gap: 8px;
+  }
+  .bar .title{ max-width: 100%; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .bar-left{ order: 1; flex: 1 1 0; }
+  .bar-right{ order: 2; flex: 1 1 0; justify-content: flex-end; }
+  .bar button{ padding: 6px 10px; font-size: 12px; border-radius: 10px; }
+  .bar-right button, #btnPrev, #btnNext{ padding: 6px 8px; font-size: 12px; }
+}
+
+/* === Mode PORTRAIT / Mobile ============================================= */
+:root{ --btn-mobile: 32px; --btn-mobile-gap: 4px; }
+
+@media (max-width: 430px){
+  .bar{ padding: 8px 10px; gap: 8px; flex-wrap: wrap; }
+  .bar-left{ order: 1; flex: 1 1 0; min-width: 0; display: inline-flex; align-items: center; gap: 6px; }
+
+  .bar-right{
+    order: 2;
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--btn-mobile-gap);
+    flex-wrap: nowrap;
+    overflow: visible;
+  }
+
+  .bar-center{
+    order: 3; position: static; transform: none; width: 100%; max-width: 100%;
+    display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 6px;
+  }
+
+  #btnPrev, #btnNext{ padding: 6px 8px; font-size: 12px; min-width: 0; }
+  .bar .title{
+    min-width: 0; max-width: 100%; font-size: 14px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: center;
+  }
+
+  .bar-right button,
+  .bar-right .tool > button{
+    width: var(--btn-mobile); height: var(--btn-mobile);
+    padding: 6px; border-radius: 8px; font-size: 11px; line-height: 1;
+    display: inline-grid; place-items: center; flex: 0 0 auto;
+  }
+  .bar-right .btn-icon span,
+  .bar-right button span:not(.sr-only){ display: none !important; }
+  .bar-right .icon{ width: 16px; height: 16px; }
+
+  .qmenu{ right: 0; left: auto; min-width: 180px; max-width: 86vw; }
+  .qitem{ padding: 8px 10px; font-size: 13px; }
+  .qmeta{ font-size: 12px; }
+
+  #scrubberBar.scrubber{ margin: 6px 0; }
+
+  #btnPiP{ display: none; }
+}
+
+@media (max-width: 380px){
+  :root{ --btn-mobile: 30px; --btn-mobile-gap: 3px; }
+}
+
+#toolSettings{ display: none; }
+@media (max-width:430px){
+  #btnQuality, #btnAudio, #btnCC{ display: none; }
+  #toolSettings{ display: inline-flex; }
+  #btnSettings{
+    width: var(--btn-mobile); height: var(--btn-mobile);
+    background:#243266; border:1px solid #3a4ba0; border-radius:8px; padding:6px 8px; font-size:13px;
+  }
+}
+
+/* Sécurité d’empilement et scroll des menus */
+.bar{ z-index: 10; position: relative; }
+#settingsMenu{ max-height: 50vh; overflow: auto; }
+
+/* Défilement fluide de l’aside et de la liste en mobile (paysage inclus) */
+@media (max-width: 960px){
+  aside{
+    overflow: auto !important;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+  }
+  .layout, #playlistAside{ min-height: 0; }
+  #channelList{
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Paysage très bas */
+@media (max-height: 480px) and (orientation: landscape){
+  #channelList{ max-height: 70vh; }
+}
+/* === Mobile paysage: tout reste visible ================================== */
+
+/* 1) Utiliser la hauteur "small viewport" en paysage pour éviter le rognage */
+@media (orientation: landscape){
+  html, body, .layout { height: 100svh; }
+}
+
+/* 2) En paysage bas, le wrapper scrolle et on fige haut/bas les barres */
+@media (orientation: landscape) and (max-height: 520px){
+  /* La grille: card (min), player (flex), controlbar (min) */
+  .wrap{
+    grid-template-rows: min-content minmax(120px, 1fr) min-content;
+    overflow: auto;                     /* au lieu de hidden en paysage bas */
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Garder la card visible en haut */
+  .card{
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    z-index: 15;
+  }
+
+  /* Garder les barres visibles en bas */
+  #scrubberBar{
+    position: sticky;
+    bottom: calc(0px + env(safe-area-inset-bottom, 0px));
+    z-index: 19;
+  }
+  #controlBar{
+    position: sticky;
+    bottom: calc(0px + env(safe-area-inset-bottom, 0px));
+    z-index: 20;
+  }
+
+  /* Rendre le player flexible: pas de hauteur forcée, respecter 16:9 */
+  #player.video-js{
+    height: auto !important;          /* casse la hauteur fixe 100% */
+    max-height: 100%;                 /* ne dépasse pas la rangée 1fr */
+    aspect-ratio: 16 / 9;             /* conserve les proportions */
+  }
+}
+
+/* 3) Déjà prévu: la controlbar redevient "statique" quand la hauteur est basse.
+   Ce bloc existe plus haut. On le laisse tel quel.
+   @media (max-height: 440px){ .bar-center{ position: static; ... } } */
+
+/* === Custom list toggle and items (addon) === */
+#btnToggleCustomList{
+  border: 1px solid var(--muted);
+  background: #0e1430;
+  color: var(--fg);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 13px;
+  cursor: pointer;
+  margin-left: 8px;
+}
+#btnToggleCustomList:hover{
+  border-color: var(--accent);
+  background: #1a2550;
+}
+.custom-item{
+  display:grid; grid-template-columns: 28px 1fr auto auto; gap:43px; align-items:center;
+  padding:8px; background:#0f1736; border:1px solid #0f1c4b; border-radius:10px; cursor:pointer;
+}
+.custom-item:hover{ border-color:#2745aa; background:#0f193f; }
+.custom-item .logo{ width:61px; height:39px; border-radius:6px; object-fit:fill; background:#0b132b; }
+.custom-item .name{ font-size:13px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.custom-item .badge{ font-size:11px; opacity:.7; }
+
+/* === Toggle de la CARD (panneau d’options) =================================== */
+#btnCardToggle{
+  position: fixed;
+  top: env(safe-area-inset-top, 10px);
+  right: env(safe-area-inset-right, 10px);
+  z-index: 130;
+  background:#243266;
+  border:1px solid #3a4ba0;
+  color:#fff;
+  border-radius:12px;
+  padding:10px 12px;
+  font-weight:700;
+  line-height:1;
+  cursor:pointer;
+  pointer-events:auto;
+}
+#btnCardToggle[aria-expanded="true"]::after{ content:" ✕"; }
+#btnCardToggle[aria-expanded="false"]::after{ content:" ☰"; }
+
+/* Card masquée par défaut, devient un panneau overlay quand ouverte */
+.card{ display: none; } /* masquée par défaut */
+.layout.card-open .card{
+  display: block;
+  position: fixed;
+  top: calc(env(safe-area-inset-top, 10px) + 56px);
+  right: env(safe-area-inset-right, 10px);
+  width: min(520px, 92vw);
+  max-height: min(72vh, 80svh);
+  overflow: auto;
+  z-index: 120;
+  box-shadow: 0 10px 30px rgba(0,0,0,.45);
+  border: 1px solid var(--border);
+  background: #121a335e;
+}
+
+/* En très petit écran, la card prend toute la largeur pour rester utilisable */
+@media (max-width: 540px){
+  .layout.card-open .card{
+    left: env(safe-area-inset-left, 10px);
+    right: env(safe-area-inset-right, 10px);
+    width: auto;
+  }
+}
+
+/* Assurer que le player reste à sa place et occupe l’espace libéré */
+.wrap{
+  grid-template-rows: 1fr auto auto; /* player 1fr; scrubber + controlbar auto */
+}
+
+
+/* Clear favorites (per list) */
+#btnClearFavsCustom, #btnClearFavsChannels {
+  border: 1px solid #2a345a;
+  background: transparent;
+  color: #e6e8ef;
+  border-radius: 10px;
+  padding: 4px 8px;
+  font-size: 12px;
+  cursor: pointer;
+  margin-left: 6px;
+}
+#btnClearFavsCustom:hover, #btnClearFavsChannels:hover {
+  background: rgba(230,232,239,0.08);
+}
+
+/* === Credit Chip flottant - côté GAUCHE ================================== */
+:root{
+  --credit-font-size: 12px;
+  --credit-opacity: .72;
+  --credit-blur: 8px;
+  --credit-pad-x: 10px;
+  --credit-pad-y: 6px;
+  --credit-radius: 999px;
+}
+
+/* Position de base : GAUCHE du viewport (pas d'impact layout) */
+#creditChip{
+  position: fixed;
+  left: calc(10px + env(safe-area-inset-left, 0px));
+  bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+  z-index: 999;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: var(--credit-pad-y) var(--credit-pad-x);
+  font-size: var(--credit-font-size);
+  line-height: 1;
+  color: #e6e8ef;
+  background: color-mix(in oklab, #0b1020 70%, transparent);
+  border: 1px solid #1f2a4c;
+  border-radius: var(--credit-radius);
+  opacity: var(--credit-opacity);
+  -webkit-backdrop-filter: blur(var(--credit-blur));
+  backdrop-filter: blur(var(--credit-blur));
+  pointer-events: none; /* ne bloque aucun bouton ni la liste */
+}
+
+#creditChip .credit-text{ white-space: nowrap; }
+
+/* ————— Auto-décalage quand l’aside est visible ————— */
+
+/* Desktop (≥960px) : aside colonne fixe = 280px → on pousse le chip après l’aside */
+@media (min-width: 960px){
+  /* Quand l’aside est affichée (layout normal) */
+  .layout:not(.fullpage) #creditChip{
+    left: calc(280px + 10px + env(safe-area-inset-left, 0px));
+  }
+  /* Quand tu passes en “plein page” (aside masqué) on revient au bord gauche */
+  .layout.fullpage #creditChip{
+    left: calc(10px + env(safe-area-inset-left, 0px));
+  }
+}
+
+/* Mobile (<960px) : aside en overlay = min(82vw, 360px). 
+   Si aside ouverte, on décale pour rester visible. */
+@media (max-width: 960px){
+  .layout.aside-open #creditChip{
+    left: calc(min(82vw, 360px) + 10px + env(safe-area-inset-left, 0px));
+  }
+}
+
+/* Option : compacter légèrement en très petit écran */
+@media (max-width: 430px){
+  #creditChip{
+    --credit-font-size: 11px;
+    --credit-pad-x: 8px;
+    --credit-pad-y: 4px;
+    opacity: .58;
+  }
+}
+
+/* ===================== Credit Chip – Modern Gradient + Hover ===================== */
+:root{
+  /* Tu peux ajuster la “pulse” visuelle ici */
+  --credit-grad-1: #3a4ba0;  /* bleu profond (cohérent avec tes boutons) */
+  --credit-grad-2: #6b5dd6;  /* violet/indigo doux */
+  --credit-grad-3: #2aa1ff;  /* accent clair */
+  --credit-glow: rgba(42, 161, 255, .22);
+}
+
+/* Mode interactif = hover/focus actifs */
+#creditChip.interactive{
+  pointer-events: auto;                 /* autorise le survol sur la zone du chip */
+  cursor: default;
+}
+
+/* Dégradé moderne de base (subtil, non flashy) */
+#creditChip{
+  background:
+    linear-gradient(135deg, color-mix(in oklab, var(--bg) 82%, transparent) 0%,
+                           color-mix(in oklab, var(--bg) 70%, transparent) 100%),
+    linear-gradient(120deg, var(--credit-grad-1), var(--credit-grad-2) 60%, var(--credit-grad-3));
+  background-blend-mode: overlay, normal;
+  border: 1px solid color-mix(in oklab, var(--credit-grad-2) 40%, #1f2a4c);
+  box-shadow:
+    0 4px 24px var(--credit-glow),
+    0 0 0 1px rgba(255,255,255,.04) inset;
+}
+
+/* Reflet “sheen” au survol : pseudo-élément qui glisse en diagonale */
+#creditChip.interactive::after{
+  content:"";
+  position:absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events:none;
+  opacity: 0;
+  background: linear-gradient(120deg,
+              transparent 20%,
+              rgba(255,255,255,.18) 40%,
+              rgba(255,255,255,.35) 50%,
+              rgba(255,255,255,.18) 60%,
+              transparent 80%);
+  transform: translateX(-30%) skewX(-12deg);
+}
+
+/* Transition douce pour tout (respect du prefers-reduced-motion) */
+@media (prefers-reduced-motion: no-preference){
+  #creditChip.interactive{
+    transition:
+      transform .25s ease,
+      box-shadow .25s ease,
+      opacity .25s ease,
+      background-position .6s ease;
+    will-change: transform, box-shadow;
+  }
+  #creditChip.interactive::after{
+    transition: opacity .35s ease, transform .7s ease;
+  }
+}
+
+/* Hover/focus : micro-lift + glow léger + reflet qui défile */
+#creditChip.interactive:hover,
+#creditChip.interactive:focus{
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 28px var(--credit-glow),
+    0 0 0 1px rgba(255,255,255,.06) inset;
+  /* Déplace légèrement le dégradé pour un effet vivant */
+  background-position: 0 0, 12% 50%;
+}
+
+#creditChip.interactive:hover::after,
+#creditChip.interactive:focus::after{
+  opacity: 1;
+  transform: translateX(55%) skewX(-12deg);
+}
+
+/* Micro-typo: légère atténuation par défaut, lisibilité en hover */
+#creditChip .credit-text{ opacity:.92 }
+#creditChip.interactive:hover .credit-text,
+#creditChip.interactive:focus .credit-text{ opacity:1 }
+
+/* Mobile: on garde discret, animation minimale, aucun impact de layout */
+@media (max-width:430px){
+  #creditChip.interactive{
+    transform: none; /* pas de lift en très petit écran */
+  }
+  #creditChip.interactive:hover::after,
+  #creditChip.interactive:focus::after{
+    opacity:.9;
+    transform: translateX(40%) skewX(-12deg);
+  }
+}
+/* Drag & Drop pour le Credit Chip */
+#creditChip.interactive{
+  cursor: grab;
+  user-select: none;
+}
+#creditChip.interactive.is-dragging{
+  cursor: grabbing;
+}
+(function () {
+  const chip = document.getElementById('creditChip');
+  if (!chip) return;
+
+  // S'assure que le chip est interactif (hover + pointeur) pour pouvoir le saisir
+  chip.classList.add('interactive');
+
+  let dragging = false;
+  let startX = 0, startY = 0;           // position curseur au début
+  let startLeft = 0, startTop = 0;      // position absolue du chip (px)
+  let rect0 = null;
+
+  const getPoint = (e) => {
+    if (e.touches && e.touches[0]) return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+    return { x: e.clientX, y: e.clientY };
+  };
+
+  const clamp = (val, min, max) => Math.max(min, Math.min(max, val));
+
+  const onStart = (e) => {
+    const { x, y } = getPoint(e);
+    rect0 = chip.getBoundingClientRect();
+
+    // Fige la position de départ en absolu (px) et bascule en ancrage left/top
+    startX = x;
+    startY = y;
+    startLeft = rect0.left;
+    startTop  = rect0.top;
+
+    // On passe en position fixe absolue, en neutralisant bottom/right pour le drag
+    chip.style.position = 'fixed';
+    chip.style.left = `${startLeft}px`;
+    chip.style.top  = `${startTop}px`;
+    chip.style.right = 'auto';
+    chip.style.bottom = 'auto';
+
+    dragging = true;
+    chip.classList.add('is-dragging');
+
+    // Empêche scroll/selection pendant le drag tactile
+    if (e.cancelable) e.preventDefault();
+  };
+
+  const onMove = (e) => {
+    if (!dragging) return;
+    const { x, y } = getPoint(e);
+    const dx = x - startX;
+    const dy = y - startY;
+
+    // Contrainte dans le viewport
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const w = rect0.width;
+    const h = rect0.height;
+
+    const nextLeft = clamp(startLeft + dx, 0, vw - w);
+    const nextTop  = clamp(startTop  + dy, 0, vh - h);
+
+    chip.style.left = `${nextLeft}px`;
+    chip.style.top  = `${nextTop}px`;
+
+    if (e.cancelable) e.preventDefault();
+  };
+
+  const onEnd = () => {
+    if (!dragging) return;
+    dragging = false;
+    chip.classList.remove('is-dragging');
+    // Note: aucune persistance => au reload, la position par défaut CSS revient automatiquement.
+  };
+
+  // Souris
+  chip.addEventListener('mousedown', onStart);
+  window.addEventListener('mousemove', onMove, { passive: false });
+  window.addEventListener('mouseup', onEnd);
+
+  // Tactile
+  chip.addEventListener('touchstart', onStart, { passive: false });
+  window.addEventListener('touchmove', onMove, { passive: false });
+  window.addEventListener('touchend', onEnd);
+  window.addEventListener('touchcancel', onEnd);
+
+  // Sécurité: si fenêtre redimensionnée pendant drag, on stoppe proprement
+  window.addEventListener('resize', onEnd);
+})();
+
