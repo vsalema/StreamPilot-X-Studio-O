@@ -8,19 +8,84 @@ function scrollActiveIntoView(el){
     : { behavior: 'smooth', block: 'nearest', inline: 'nearest' };
   el.scrollIntoView(opts);
 }
+
 // customlist-nav.js
 (function () {
   // ------- Helpers DOM -------
-  const $ = (sel) => document.querySelector(sel);
+  const $  = (sel) => document.querySelector(sel);
   const $$ = (sel) => Array.from(document.querySelectorAll(sel));
 
-  const btnPrev = $('#btnPrev');
-  const btnNext = $('#btnNext');
+  const btnPrev   = $('#btnPrev');
+  const btnNext   = $('#btnNext');
   const btnToggle = $('#btnToggleCustomList');
-  const listEl   = $('#customList');
-  const titleEl  = $('#currentTitle');
+  const listEl    = $('#customList');
+  const titleEl   = $('#currentTitle');
 
   if (!btnPrev || !btnNext || !btnToggle || !listEl) return;
+
+  // ----- Split Box pour customlist -----
+  function renderCustomlistTitleBox(row) {
+    if (!titleEl || !row) return;
+
+    const nameEl  = row.querySelector('.name');
+    const logoEl  = row.querySelector('.logo');
+    const badgeEl = row.querySelector('.badge');
+
+    const name  = nameEl ? nameEl.textContent.trim() : '';
+    const logo  = logoEl ? logoEl.src : '';
+    const group = badgeEl ? badgeEl.textContent.trim() : '';
+
+    const subtitle = group || '';
+
+    // Reset du contenu
+    titleEl.innerHTML = '';
+
+    // Box principale
+    const box = document.createElement('div');
+    box.className = 'cl-split-box';
+
+    // Logo
+    const logoWrap = document.createElement('div');
+    logoWrap.className = 'cl-split-logo';
+
+    if (logo) {
+      const img = document.createElement('img');
+      img.src = logo;
+      img.alt = '';
+      img.loading = 'lazy';
+      img.referrerPolicy = 'no-referrer';
+      logoWrap.appendChild(img);
+    }
+
+    // Textes
+   const textWrap = document.createElement('div');
+textWrap.className = 'cl-split-text';
+
+// Titre
+const titleDiv = document.createElement('div');
+titleDiv.className = 'cl-split-title';
+titleDiv.textContent = name || 'Chaîne';
+
+// Ligne "En direct"
+const liveDiv = document.createElement('div');
+liveDiv.className = 'cl-split-live';
+liveDiv.textContent = 'En direct';
+
+// Sous-texte (groupe/badge)
+const subDiv = document.createElement('div');
+subDiv.className = 'cl-split-sub';
+subDiv.textContent = subtitle;
+
+// Ordre d'affichage
+textWrap.appendChild(titleDiv);
+textWrap.appendChild(liveDiv);
+textWrap.appendChild(subDiv);
+
+    box.appendChild(logoWrap);
+    box.appendChild(textWrap);
+
+    titleEl.appendChild(box);
+  }
 
   // État de navigation local à la customList
   let cur = -1;
@@ -31,7 +96,7 @@ function scrollActiveIntoView(el){
 
   const clearActive = () => rows().forEach(r => r.classList.remove('active'));
 
-  // ➜ PATCH : auto-scroll doux ajouté ici
+  // Active une ligne + scroll + Split Box dans currentTitle
   const setActiveAt = (i) => {
     const r = rows()[i];
     if (!r) return;
@@ -40,11 +105,30 @@ function scrollActiveIntoView(el){
     // Auto-scroll vers l’élément actif (respecte prefers-reduced-motion)
     scrollActiveIntoView(r);
 
+    // Affiche la Split Box (logo + titre + sous-texte)
     try {
+      renderCustomlistTitleBox(r);
+    } catch (_) {
+      // fallback simple texte au cas où
       const name = r.querySelector('.name')?.textContent?.trim();
       if (name) titleEl.textContent = name;
-    } catch (_) {}
+    }
   };
+
+  // Synchroniser le clic direct sur un item avec Split Box + actif
+  listEl.addEventListener('click', (e) => {
+    const item = e.target.closest('.custom-item');
+    if (!item) return;
+
+    const items = rows();
+    const index = items.indexOf(item);
+    if (index === -1) return;
+
+    cur = index;
+
+    clearActive();
+    setActiveAt(cur);
+  });
 
   const playAt = (i) => {
     const items = rows();
@@ -68,13 +152,15 @@ function scrollActiveIntoView(el){
       if (rows().length) playAt(0);
     }
   };
-// ---- Interception Prev/Next quand la customList est ouverte ----
+
+  // ---- Interception Prev/Next quand la customList est ouverte ----
   const onPrev = (e) => {
     if (!isCustomOpen()) return;
     e.preventDefault(); e.stopImmediatePropagation();
     if (!rows().length) return;
     playAt(cur < 0 ? rows().length - 1 : cur - 1);
   };
+
   const onNext = (e) => {
     if (!isCustomOpen()) return;
     e.preventDefault(); e.stopImmediatePropagation();
@@ -104,12 +190,13 @@ function scrollActiveIntoView(el){
     if (typeof original !== 'function') return;
     window.renderCustomList = function patched() {
       const res = original.apply(this, arguments);
+
       // Après re-render : réappliquer un actif si besoin
       cur = Math.min(Math.max(cur, -1), rows().length - 1);
       if (rows().length) {
         if (cur < 0) cur = 0;
         clearActive();
-        setActiveAt(cur); // auto-scroll s’applique aussi ici
+        setActiveAt(cur); // auto-scroll + Split Box aussi ici
       }
       return res;
     };
@@ -117,8 +204,12 @@ function scrollActiveIntoView(el){
 
   // Attends que custom-addon ait exposé renderCustomList
   if (document.readyState === 'complete' || document.readyState === 'interactive') {
-    patchRender(); resetIfNeeded();
+    patchRender();
+    resetIfNeeded();
   } else {
-    window.addEventListener('DOMContentLoaded', () => { patchRender(); resetIfNeeded(); });
+    window.addEventListener('DOMContentLoaded', () => {
+      patchRender();
+      resetIfNeeded();
+    });
   }
 })();

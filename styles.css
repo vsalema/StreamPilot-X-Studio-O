@@ -1060,199 +1060,108 @@ a:focus-visible,
   outline: 2px solid #00bcd4;
   outline-offset: 2px;
 }
-.spx-title-logo {
-  width: 22px;
-  height: 22px;
-  object-fit: contain;
-  vertical-align: middle;
-  margin-right: 6px;
-  border-radius: 4px;
+/* Split box du titre (utilisée par la customlist) */
+#currentTitle {
+  white-space: normal;
+  overflow: visible;
 }
 
-.spx-title-logo {
-  width: 22px;
-  height: 22px;
-  object-fit: contain;
-  vertical-align: middle;
-  margin-right: 6px;
-  border-radius: 4px;
-}
-.spx-split-box {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: rgba(20, 20, 20, 0.65);
-  padding: 8px 12px;
-  border-radius: 12px;
-  backdrop-filter: blur(4px);
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  max-width: 100%;
-}
-
-.spx-split-left img {
-  width: 34px;
-  height: 34px;
-  object-fit: contain;
-  border-radius: 6px;
-}
-
-/* Colonne de droite : flex + gestion des titres longs */
-.spx-split-right {
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  min-width: 0;
-}
-
-.spx-split-right .title {
-  color: white;
-  font-size: 1.05rem;
-  font-weight: 600;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis; /* coupe proprement les titres très longs */
-}
-
-.spx-split-right .subtitle {
-  color: #c5c5c5;
-  font-size: 0.75rem;
-  margin-top: 2px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-/* Container principal : split box titre + logo */
-.spx-split-box {
+.cl-split-box {
   display: flex;
   align-items: center;
   gap: 10px;
   padding: 8px 12px;
   border-radius: 12px;
-
-  /* Style 1C : transparent + léger contour */
   background: rgba(0, 0, 0, 0.25);
   border: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-
   max-width: 100%;
 }
 
-/* Bloc gauche : logo (taille 2B) */
-.spx-split-left img {
+.cl-split-logo {
+  flex: 0 0 auto;
   width: 55px;
   height: 34px;
-  object-fit: contain;
-  border-radius: 6px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Bloc droit : colonne flex, gère les titres longs */
-.spx-split-right {
+.cl-split-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.cl-split-text {
   display: flex;
   flex-direction: column;
-  min-width: 0;     /* essentiel pour ellipsis */
-  overflow: hidden;
+  min-width: 0;
 }
 
-/* Titre */
-.spx-split-right .title {
-  color: #ffffff;
+.cl-split-title {
   font-size: 1.05rem;
   font-weight: 600;
+  line-height: 1.2;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/* Sous-titre (ex: En direct) */
-.spx-split-right .subtitle {
-  color: #c5c5c5;
-  font-size: 0.75rem;
-  margin-top: 2px;
+.cl-split-sub {
+  font-size: 11px;
+  opacity: 0.75;
+  line-height: 1.2;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/* Petit affinage mobile si tu veux */
-@media (max-width: 600px) {
-  .spx-split-box {
-    padding: 6px 10px;
-    gap: 8px;
-  }
-
-  .spx-split-left img {
-    width: 30px;
-    height: 30px;
-  }
-
-  .spx-split-right .title {
-    font-size: 0.95rem;
-  }
-
-  .spx-split-right .subtitle {
-    font-size: 0.7rem;
-  }
-}
-/* Pulse doux pour le logo principal */
-.spx-main-logo {
-  animation: spxMainLogoPulse 2.4s ease-in-out infinite;
-  transform-origin: center;
-}
-
-@keyframes spxMainLogoPulse {
-  0% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(1.06);
-    opacity: 0.92;
-  }
-  100% {
-    transform: scale(1);
-    opacity: 1;
-  }
+.cl-split-live {
+  font-size: 11px;
+  color: #ff4d4d;
+  font-weight: 600;
 }
 @media (max-width: 600px) {
-  /* La box elle-même est centrée horizontalement */
   #currentTitle {
     display: flex;
     justify-content: center;
   }
-
-  .spx-split-box {
-    margin: 0 auto;
+}
+/* Horloge bleue */
+#clockDisplay {
+  margin-left: 10px;
+  padding: 8px 12px;
+  background: #0f163000;
+  border: 1px solid #f4f5f800;
+  color: #0bc6e3;
+  font-weight: 600;
+  border-radius: 10px;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+}
+/* Version mobile */
+@media (max-width: 430px) {
+  #clockDisplay {
+    padding: 6px;
+    width: 46px;
     justify-content: center;
-    padding: 6px 10px;
-    gap: 8px;
-  }
-
-  .spx-split-left img {
-    width: 30px;
-    height: 30px;
-  }
-
-  .spx-split-right {
-    align-items: center;    /* centre le texte dans la colonne */
-    text-align: center;     /* texte centré */
-  }
-
-  .spx-split-right .title {
-    font-size: 0.95rem;
-  }
-
-  .spx-split-right .subtitle {
-    font-size: 0.7rem;
+    font-size: 11px;
   }
 }
-@media (max-width: 600px) {
-  .spx-split-left img {
-    width: 55px;
-    height: 30px;
-  }
+.favFilter{background:#243266;border:1px solid #3a4ba0;border-radius:10px;padding:8px 12px;font-weight:600;cursor:pointer}
+.favFilter.active{background:#3a4ba0}
+/* Variante icône seule pour le refresh */
+.favFilter.fav-icon{
+  padding: 8px;
+  width: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
 }
-:fullscreen,
-:-webkit-full-screen,
-:-moz-full-screen {
-  /* règles uniformisées */
-}
+

@@ -1,13 +1,7 @@
 <!doctype html>
-      <html
-        lang="fr"
-        data-theme="light dark"
-        data-renderer="Doc"
-        
-        
-      >
+<html lang="fr">
 <head>
-<meta charset="utf-8" />
+  <meta charset="utf-8" />
 <meta name="theme-color" content="#0b1020" />
 
 <!-- Optimisation réseau pour les ressources externes -->
@@ -16,26 +10,29 @@
 <link rel="preconnect" href="https://raw.githubusercontent.com">
 
 <!-- Prioriser ton CSS principal -->
-  <link rel="preload" href="./styles.css" as="style" />
-  <link rel="stylesheet" href="./styles.css" />
+<link rel="preload" href="./styles.css" as="style" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-<LINK REL="SHORTCUT ICON" HREF="/StreamPilot-X-Studio-O/icons/favicon.ico">
-  <link rel="icon" type="image/png" href="/StreamPilot-X-Studio-O/icons/favicon-96x96.png" sizes="96x96" />
-  <link rel="icon" type="image/svg+xml" href="/StreamPilot-X-Studio-O/favicon.svg" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="shortcut icon" href="/StreamPilot-X-Studio-O/icons/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/StreamPilot-X-Studio-O/icons/apple-touch-icon.png" />
-    <link rel="manifest" href="/StreamPilot-X-Studio-O/icons/site.webmanifest" />
+<LINK REL="SHORTCUT ICON" HREF="/favicon.ico">
+  <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="./site.webmanifest" />
   <title>StreamPilot X</title>
-  
-  <!-- CSS Video.js (préchargé pour éviter le blocage du rendu) -->
-<link rel="preload" href="https://unpkg.com/video.js@8/dist/video-js.css" as="style" />
-<link rel="stylesheet" href="https://unpkg.com/video.js@8/dist/video-js.css" />
-<!-- FileLabel : faible impact → chargement non-bloquant -->
-<link rel="stylesheet" href="./fileLabel.css" media="print" onload="this.media='all'" />
+  <link href="https://vsalema.github.io/tvpt4/css/fileLabel.css" rel="stylesheet" />
+  <link href="https://unpkg.com/video.js@8/dist/video-js.css" rel="stylesheet" />
+  <link href="./styles.css" rel="stylesheet" />
+<style>
+#player.video-js {
+ background: var(--bg);
+ border-radius: 0.375rem;
+}
+</style>
 </head>
 <body>
   <div class="layout" id="layoutRoot">
@@ -60,9 +57,10 @@
 
   <!-- 🔄 Nouveau bouton refresh (picto seul) -->
   <button id="btnRefreshPlaylist" class="favFilter fav-icon" type="button" title="Rafraîchir la playlist">⟳</button>
+
   <button id="btnCheckLinks" class="favFilter" type="button" title="Vérifier l’accessibilité des liens">🔍 Vérifier liens</button>
 
-  <img class="spx-main-logo" src="https://raw.githubusercontent.com/imagesloads/images/refs/heads/main/img_7c940b1621b45f87.png"
+  <img src="https://raw.githubusercontent.com/imagesloads/images/refs/heads/main/img_7c940b1621b45f87.png"
        alt="StreamPilot X" 
   style="width: 7.1em; height: 2.7em;display:inline-block;vertical-align: middle;object-fit: contain;">
   </div>
@@ -155,12 +153,10 @@
               <button  id="btnExpandAside" type="button" title="Plein page (masquer l’aside)">←→</button>
               <button id="btnExpandFull"  type="button" title="Plein écran (toute la page)">⛶</button>
               <button id="btnMute" type="button" title="Activer/Désactiver le son" aria-pressed="true">🔊</button>
-            <span id="clockDisplay" class="clock">00:00:00</span>
-            <button id="btnradio" class="favFilter fav-icon" type="button" title="Radio FM">📻</button>
-           </div>
+              <span id="clockDisplay" class="clock">00:00:00</span>
+              <button id="btnradio" class="favFilter fav-icon" type="button" title="Radio FM">📻</button>
+            </div>
           </div>
-
- 
 
           
 
@@ -239,6 +235,7 @@
   <script src="https://unpkg.com/videojs-max-quality-selector/dist/videojs-max-quality-selector.min.js"></script>
 
   <!-- App -->
+  <script src="chips.js" defer></script>
   <script src="favs-patch.js" defer></script> 
   <script src="./app.js"></script>
 
@@ -291,12 +288,12 @@
       </symbol>
     </defs>
   </svg>
-  <script src="./custom-addon.js" defer></script>
-     <script src="./customlist-nav.js" defer></script>
+  <script src="./custom-addon.js"></script>
+     <script src="./customlist-nav.js"></script>
 <div id="creditChip" class="interactive" role="contentinfo" aria-label="Crédits du projet">
   <span class="credit-text">Conçu & réalisé par <strong>V. Salema</strong> — StreamPilot X Studio</span>
 </div>
-<script src="./player-advanced.js" defer></script>
+
 <script>
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {

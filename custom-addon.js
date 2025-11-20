@@ -1,22 +1,22 @@
 (function(){
   // Configuration initiale: à éditer par l'utilisateur
   window.CUSTOM_LIST = window.CUSTOM_LIST || [
-    { title: "TF1",  logo: "/StreamPilot-X-Studio-O/logos/tf1.png", type: "overlay", url: "https://vsalema.github.io/play/?https://raw.githubusercontent.com/mikekaprielian/rtnaodhor93n398/main/fr/videotf1.m3u8" },
-    { title: "TF1.SF",  logo: "/StreamPilot-X-Studio-O/logos/tf1sf.png", type: "overlay", url: "https://vsalema.github.io/play/?https://sv1.data-stream.top/40198e2d9155209a7624aafd668cc0b3a8da90afa64027bb3df8179d110a4580/hls/seriefilmes.m3u8" },
-    { title: "CMTV", logo: "/StreamPilot-X-Studio-O/logos/cmtv.png", type: "overlay", url: "//popcdn.day/player.php?stream=CMTVPT" },
-    { title: "TVI",  logo: "/StreamPilot-X-Studio-O/logos/TVI.png", type: "overlay", url: "https://vsalema.github.io/tvi2/" },
-    { title: "TVIR", logo: "/StreamPilot-X-Studio-O/logos/tvir.jpg", type: "overlay", url: "https://vsalema.github.io/tvi-reality/" },
+    { title: "TF1",  logo: "/StreamPilot-X-Studio-S/logos/tf1.png", type: "overlay", url: "https://vsalema.github.io/play/?https://raw.githubusercontent.com/mikekaprielian/rtnaodhor93n398/main/fr/videotf1.m3u8" },
+    { title: "TF1.SF",  logo: "/StreamPilot-X-Studio-S/logos/tf1sf.png", type: "overlay", url: "https://vsalema.github.io/play/?https://sv1.data-stream.top/ea90a392e08100b4679aa51b357f6cd0936467798c9b5da30d73b52a683a8f26/hls/seriefilmes.m3u8" },
+    { title: "CMTV", logo: "/StreamPilot-X-Studio-S/logos/cmtv.png", type: "overlay", url: "//popcdn.day/player.php?stream=CMTVPT" },
+    { title: "TVI",  logo: "/StreamPilot-X-Studio-S/logos/TVI.png", type: "overlay", url: "https://vsalema.github.io/tvi2/" },
+    { title: "TVIR", logo: "/StreamPilot-X-Studio-S/logos/tvir.jpg", type: "overlay", url: "https://vsalema.github.io/tvi-reality/" },
     { title: "TVIF", logo: "https://www.iol.pt/multimedia/oratvi/multimedia/imagem/id/616562540cf279ce41ddfe4f/", type: "overlay", url: "https://vsalema.github.io/tvi-ficcao/" },
-    { title: "TVIA", logo: "/StreamPilot-X-Studio-O/logos/tvia.png", type: "overlay", url: "https://vsalema.github.io/tvi-africa/" },
-    { title: "SIC",  logo: "/StreamPilot-X-Studio-O/logos/sic.jpg", type: "overlay", url: "https://vsalema.github.io/sic/" },
-    { title: "CNN",  logo: "/StreamPilot-X-Studio-O/logos/cnn.png", type: "overlay", url: "https://vsalema.github.io/CNN/" },
-    { title: "RTP1", logo: "/StreamPilot-X-Studio-O/logos/rtp1.jpg", type: "overlay", url: "https://vsalema.github.io/play/?https://streaming-live.rtp.pt/liverepeater/smil:rtp1HD.smil/playlist.m3u8" },
-    { title: "RTPN", logo: "/StreamPilot-X-Studio-O/logos/rtpn.png", type: "overlay", url: "https://vsalema.github.io/play/?https://streaming-live.rtp.pt/livetvhlsDVR/rtpnHDdvr.smil/playlist.m3u8?DVR" },
-    { title: "RTPI", logo: "/StreamPilot-X-Studio-O/logos/rtpi.jpg", type: "overlay", url: "https://vsalema.github.io/play/?https://streaming-live.rtp.pt/liverepeater/rtpi.smil/playlist.m3u8" },
-    { title: "CANAL+",  logo: "/StreamPilot-X-Studio-O/logos/canal+.png", type: "overlay", url: "//popcdn.day/go.php?stream=CANALPLFR" },
-    { title: "CANAL+F", logo: "/StreamPilot-X-Studio-O/logos/C+_Foot.png", type: "overlay", url: "//popcdn.day/go.php?stream=FOOTPLUSFR" },
-    { title: "RMC Sp",  logo: "/StreamPilot-X-Studio-O/logos/rmcf.png", type: "overlay", url: "https://popcdn.day/go.php?stream=RMCSPORT1FR" },
-    { title: "BTV", logo: "/StreamPilot-X-Studio-O/logos/btv.svg", type: "overlay", url: "//popcdn.day/go.php?stream=BTV1" },
+    { title: "TVIA", logo: "/StreamPilot-X-Studio-S/logos/tvia.png", type: "overlay", url: "https://vsalema.github.io/tvi-africa/" },
+    { title: "SIC",  logo: "/StreamPilot-X-Studio-S/logos/sic.jpg", type: "overlay", url: "https://vsalema.github.io/sic/" },
+    { title: "CNN",  logo: "/StreamPilot-X-Studio-S/logos/cnn.png", type: "overlay", url: "https://vsalema.github.io/CNN/" },
+    { title: "RTP1", logo: "/StreamPilot-X-Studio-S/logos/rtp1.jpg", type: "overlay", url: "https://vsalema.github.io/play/?https://streaming-live.rtp.pt/liverepeater/smil:rtp1HD.smil/playlist.m3u8" },
+    { title: "RTPN", logo: "/StreamPilot-X-Studio-S/logos/rtpn.png", type: "overlay", url: "https://vsalema.github.io/play/?https://streaming-live.rtp.pt/livetvhlsDVR/rtpnHDdvr.smil/playlist.m3u8?DVR" },
+    { title: "RTPI", logo: "/StreamPilot-X-Studio-S/logos/rtpi.jpg", type: "overlay", url: "https://vsalema.github.io/play/?https://streaming-live.rtp.pt/liverepeater/rtpi.smil/playlist.m3u8" },
+    { title: "CANAL+",  logo: "/StreamPilot-X-Studio-S/logos/canal+.png", type: "overlay", url: "//popcdn.day/go.php?stream=CANALPLFR" },
+    { title: "CANAL+F", logo: "/StreamPilot-X-Studio-S/logos/C+_Foot.png", type: "overlay", url: "//popcdn.day/go.php?stream=FOOTPLUSFR" },
+    { title: "RMC Sp",  logo: "/StreamPilot-X-Studio-S/logos/rmcf.png", type: "overlay", url: "https://popcdn.day/go.php?stream=RMCSPORT1FR" },
+    { title: "BTV", logo: "/StreamPilot-X-Studio-S/logos/btv.svg", type: "overlay", url: "//popcdn.day/go.php?stream=BTV1" },
     { title: "SCP", logo: "https://pplware.sapo.pt/wp-content/uploads/2017/06/scp_00.jpg", type: "overlay", url: "//popcdn.day/go.php?stream=SPT1" },
     { title: "11",  logo: "https://www.zupimages.net/up/24/13/qj99.jpg", type: "overlay", url: "https://popcdn.day/go.php?stream=Canal11" },
     { title: "BOLA", logo: "https://www.telesatellite.com/images/actu/a/abolatv.jpg", type: "overlay", url: "//popcdn.day/go.php?stream=ABOLA" },
@@ -189,25 +189,12 @@
 
       row.appendChild(fav);
 
-             row.addEventListener('click', function () {
-        // 1) Mettre à jour le titre + mini logo dans currentTitle
-        if (typeof window.spxRenderChannelHeader === 'function') {
-          window.spxRenderChannelHeader(
-            item.title || '(Sans titre)',
-            item.logo || null
-          );
-        }
-
-        // 2) Comportement existant : overlay ou source
-        if (item.type === 'overlay') {
-          openOverlay(item.url);
-        } else if (hasFn('loadSource')) {
-          window.loadSource(item.url);
-        }
+      row.addEventListener('click', function(){
+        if(item.type === 'overlay'){ openOverlay(item.url); }
+        else if(hasFn('loadSource')){ window.loadSource(item.url); }
       });
-    
 
-// ✅ applique le mini-patch ICI (après handlers, avant append)
+      // ✅ applique le mini-patch ICI (après handlers, avant append)
       enhanceCustomItem(row);
 
       list.appendChild(row);
@@ -227,30 +214,50 @@
     if(!open) render();
     setOpen(!open);
   });
-  // === Bouton Radio : ouvrir l'entrée "R.Alfa" en overlay ===
-  var btnRadio = $('btnradio');
+  // --- Bouton Radio: reproduire le comportement de l'entrée "R.Alfa" ---
+    // --- Bouton Radio : comportement identique à l'entrée "R.Alfa" ---
+  var btnRadio = $('btnradio'); // helper = getElementById
   if (btnRadio) {
-    btnRadio.addEventListener('click', function () {
-      // On récupère l'entrée "R.Alfa" depuis CUSTOM_LIST
-      var data = Array.isArray(window.CUSTOM_LIST) ? window.CUSTOM_LIST : [];
-      var radioItem = data.find(function (it) {
-        return it && it.title === "R.Alfa";
-      });
-
-      var url  = radioItem && radioItem.url  ? radioItem.url  : "https://vsalema.github.io/radio-alfa-5/";
-      var logo = radioItem && radioItem.logo ? radioItem.logo : null;
-      var title = radioItem && radioItem.title ? radioItem.title : "R.Alfa";
-
-      // Met à jour le header central (titre + logo)
-      if (typeof window.spxRenderChannelHeader === "function") {
-        window.spxRenderChannelHeader(title, logo, "Radio");
+    btnRadio.addEventListener('click', function (e) {
+      // Évite toute navigation "bizarre" (form, etc.)
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
       }
 
-      // Ouvre l’overlay avec l’URL de R.Alfa
+      // 1) Si la customList est rendue et contient "R.Alfa" → on simule un clic sur la ligne
+      try {
+        var rows = Array.from(list.querySelectorAll('.custom-item'));
+        var row = rows.find(function (r) {
+          var nameEl = r.querySelector('.name');
+          return nameEl && nameEl.textContent.trim() === 'R.Alfa';
+        });
+
+        if (row) {
+          row.click(); // déclenche le même handler que dans render()
+          return;
+        }
+      } catch (err) {
+        // on ignore et on passera au fallback URL
+      }
+
+      // 2) Fallback : on cherche "R.Alfa" dans CUSTOM_LIST
+      var data = Array.isArray(window.CUSTOM_LIST) ? window.CUSTOM_LIST : [];
+      var radioItem = data.find(function (it) {
+        return it && it.title === 'R.Alfa';
+      });
+
+      var url = radioItem && radioItem.url
+        ? radioItem.url
+        : 'https://vsalema.github.io/radio-alfa-5/';
+
+      // 3) On force l’ouverture via l’overlay interne (iframe), SANS window.open
       openOverlay(url);
     });
   }
+
 })();
+
 
 // --- Force ouverture de channelList quand on clique un exemple du menu ---
 document.addEventListener("click", (e) => {
@@ -302,56 +309,23 @@ try {
 } catch(e) {}
 
 
-function spxRenderChannelHeader(title, logoUrl, subtitle) {
-  const container = document.getElementById('currentTitle');
-  if (!container) return;
+ 
 
-  // Valeurs par défaut
-  const safeTitle = title || 'Aucune chaîne';
-  const safeSubtitle = subtitle || 'En direct';
 
-  // On vide le contenu actuel
-  while (container.firstChild) {
-    container.removeChild(container.firstChild);
-  }
 
-  // Wrapper principal
-  const box = document.createElement('div');
-  box.className = 'spx-split-box';
 
-  // Zone gauche : logo
-  const left = document.createElement('div');
-  left.className = 'spx-split-left';
 
-  if (logoUrl) {
-    const img = document.createElement('img');
-    img.src = logoUrl;
-    img.alt = '';
-    img.loading = 'lazy';
-    img.decoding = 'async';
-    left.appendChild(img);
-  }
 
-  // Zone droite : titre + sous-titre
-  const right = document.createElement('div');
-  right.className = 'spx-split-right';
 
-  const titleEl = document.createElement('div');
-  titleEl.className = 'title';
-  titleEl.textContent = safeTitle;
 
-  const subtitleEl = document.createElement('div');
-  subtitleEl.className = 'subtitle';
-  subtitleEl.textContent = safeSubtitle;
 
-  right.appendChild(titleEl);
-  right.appendChild(subtitleEl);
 
-  box.appendChild(left);
-  box.appendChild(right);
 
-  container.appendChild(box);
-}
 
-// exposée globalement
-window.spxRenderChannelHeader = spxRenderChannelHeader;
+
+
+
+
+
+
+
