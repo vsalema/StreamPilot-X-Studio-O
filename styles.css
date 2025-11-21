@@ -577,6 +577,7 @@ details[open] .summary .caret{transform:rotate(90deg)}
   font-size: 13px;
   cursor: pointer;
   margin-left: 8px;
+  width: 9em;
 }
 #btnToggleCustomList:hover{
   border-color: var(--accent);
