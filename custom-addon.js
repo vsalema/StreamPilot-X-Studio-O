@@ -2,7 +2,7 @@
   // Configuration initiale: à éditer par l'utilisateur
   window.CUSTOM_LIST = window.CUSTOM_LIST || [
     { title: "TF1",  logo: "/StreamPilot-X-Studio-S/logos/tf1.png", type: "overlay", url: "https://vsalema.github.io/play/?https://raw.githubusercontent.com/mikekaprielian/rtnaodhor93n398/main/fr/videotf1.m3u8" },
-    { title: "TF1.SF",  logo: "/StreamPilot-X-Studio-S/logos/tf1sf.png", type: "overlay", url: "https://vsalema.github.io/play/?https://sv1.data-stream.top/ea90a392e08100b4679aa51b357f6cd0936467798c9b5da30d73b52a683a8f26/hls/seriefilmes.m3u8" },
+    { title: "TF1.SF",  logo: "/StreamPilot-X-Studio-S/logos/tf1sf.png", type: "overlay", url: "https://vsalema.github.io/play/?https://raw.githubusercontent.com/mikekaprielian/rtnaodhor93n398/main/fr/videotf1fs.m3u8" },
     { title: "CMTV", logo: "/StreamPilot-X-Studio-S/logos/cmtv.png", type: "overlay", url: "//popcdn.day/player.php?stream=CMTVPT" },
     { title: "TVI",  logo: "/StreamPilot-X-Studio-S/logos/TVI.png", type: "overlay", url: "https://vsalema.github.io/tvi2/" },
     { title: "TVIR", logo: "/StreamPilot-X-Studio-S/logos/tvir.jpg", type: "overlay", url: "https://vsalema.github.io/tvi-reality/" },
