@@ -1,0 +1,172 @@
+{
+  "fmStations": [
+    {
+      "freq": 881,
+      "name": "France Inter",
+      "rds": "Radio France • généraliste",
+      "url": "https://icecast.radiofrance.fr/franceinter-midfi.mp3",
+      "logo": "img/webradio-franceinter.png"
+    },
+    {
+      "freq": 915,
+      "name": "franceinfo:",
+      "rds": "Info en continu",
+      "url": "https://icecast.radiofrance.fr/franceinfo-midfi.mp3",
+      "logo": "img/webradio-franceinfo.png"
+    },
+    {
+      "freq": 943,
+      "name": "Fun Radio",
+      "rds": "Le son dancefloor",
+      "url": "http://icecast.funradio.fr/fun-1-44-128",
+      "logo": "img/webradio-funradio.png"
+    },
+    {
+      "freq": 979,
+      "name": "NRJ",
+      "rds": "Hit Music Only",
+      "url": "https://streaming.nrjaudio.fm/oumvmk8fnozc?origine=fluxurlradio",
+      "logo": "img/webradio-nrj.png"
+    },
+    {
+      "freq": 993,
+      "name": "RTL",
+      "rds": "Talk / actualité",
+      "url": "http://streaming.radio.rtl.fr/rtl-1-44-128",
+      "logo": "img/webradio-rtl.png"
+    },
+    {
+      "freq": 1010,
+      "name": "RFM",
+      "rds": "Le meilleur de la musique",
+      "url": "http://stream.rfm.fr/rfm.mp3",
+      "logo": "img/webradio-rfm.png"
+    },
+    {
+      "freq": 1025,
+      "name": "Europe 1",
+      "rds": "Info & talk",
+      "url": "http://ais-live.cloud-services.paris:8000/europe1.mp3",
+      "logo": "img/webradio-europe1.png"
+    },
+    {
+      "freq": 1035,
+      "name": "France Musique",
+      "rds": "Classique & jazz",
+      "url": "http://direct.francemusique.fr/live/francemusique-midfi.mp3",
+      "logo": "img/webradio-francemusique.png"
+    },
+    {
+      "freq": 1043,
+      "name": "RMC",
+      "rds": "Info & sport",
+      "url": "https://rmc.bfmtv.com/rmcinfo-mp3",
+      "logo": "img/webradio-rmc.png"
+    },
+    {
+      "freq": 1062,
+      "name": "Skyrock",
+      "rds": "Premier sur le rap",
+      "url": "http://icecast.skyrock.net/s/natio_mp3_128k",
+      "logo": "img/webradio-skyrock.png"
+    },
+    {
+      "freq": 1079,
+      "name": "OUI FM",
+      "rds": "La radio du rock",
+      "url": "http://stream.ouifm.fr/ouifm-high.mp3",
+      "logo": "img/webradio-ouifm.png"
+    }
+  ],
+
+  "webRadios": [
+    {
+      "id": "france-inter",
+      "name": "France Inter",
+      "description": "Radio France • généraliste",
+      "url": "https://icecast.radiofrance.fr/franceinter-midfi.mp3",
+      "logo": "img/webradio-franceinter.png",
+      "tags": ["France", "Généraliste"]
+    },
+    {
+      "id": "france-info",
+      "name": "franceinfo:",
+      "description": "Info en continu",
+      "url": "https://icecast.radiofrance.fr/franceinfo-midfi.mp3",
+      "logo": "img/webradio-franceinfo.png",
+      "tags": ["France", "Info"]
+    },
+    {
+      "id": "france-musique",
+      "name": "France Musique",
+      "description": "Classique, jazz, créations",
+      "url": "http://direct.francemusique.fr/live/francemusique-midfi.mp3",
+      "logo": "img/webradio-francemusique.png",
+      "tags": ["France", "Classique", "Jazz"]
+    },
+    {
+      "id": "nrj",
+      "name": "NRJ",
+      "description": "Hit Music Only",
+      "url": "https://streaming.nrjaudio.fm/oumvmk8fnozc?origine=fluxurlradio",
+      "logo": "img/webradio-nrj.png",
+      "tags": ["Hits", "France"]
+    },
+    {
+      "id": "fun-radio",
+      "name": "Fun Radio",
+      "description": "Le son dancefloor",
+      "url": "http://icecast.funradio.fr/fun-1-44-128",
+      "logo": "img/webradio-funradio.png",
+      "tags": ["Dance", "Hits"]
+    },
+    {
+      "id": "rtl",
+      "name": "RTL",
+      "description": "Talk, actualité, divertissement",
+      "url": "http://streaming.radio.rtl.fr/rtl-1-44-128",
+      "logo": "img/webradio-rtl.png",
+      "tags": ["Talk", "Info"]
+    },
+    {
+      "id": "europe1",
+      "name": "Europe 1",
+      "description": "Info & talk",
+      "url": "http://ais-live.cloud-services.paris:8000/europe1.mp3",
+      "logo": "img/webradio-europe1.png",
+      "tags": ["Info", "Talk"]
+    },
+    {
+      "id": "rfm",
+      "name": "RFM",
+      "description": "Le meilleur de la musique",
+      "url": "http://stream.rfm.fr/rfm.mp3",
+      "logo": "img/webradio-rfm.png",
+      "tags": ["Adult Pop", "France"]
+    },
+    {
+      "id": "rmc",
+      "name": "RMC",
+      "description": "Info & sport",
+      "url": "https://rmc.bfmtv.com/rmcinfo-mp3",
+      "logo": "img/webradio-rmc.png",
+      "tags": ["Info", "Sport"]
+    },
+    {
+      "id": "skyrock",
+      "name": "Skyrock",
+      "description": "Premier sur le rap",
+      "url": "http://icecast.skyrock.net/s/natio_mp3_128k",
+      "logo": "img/webradio-skyrock.png",
+      "tags": ["Rap", "Urbain"]
+    },
+    {
+      "id": "ouifm",
+      "name": "OUI FM",
+      "description": "La radio du rock",
+      "url": "http://stream.ouifm.fr/ouifm-high.mp3",
+      "logo": "img/webradio-ouifm.png",
+      "tags": ["Rock"]
+    }
+  ]
+}
