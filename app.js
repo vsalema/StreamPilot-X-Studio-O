@@ -31,6 +31,75 @@ function parseM3UExtended(text,baseUrl){
 const player=videojs('player',{autoplay:true,muted:true,controls:true,preload:'auto',fluid:true,responsive:true,html5:{vhs:{enableLowInitialPlaylist:true,useDevicePixelRatio:true}},techOrder:['html5','youtube']});
 if(player.maxQualitySelector){player.maxQualitySelector({persist:true});}else{console.warn('Plugin videojs-max-quality-selector non détecté.');}
 
+
+
+
+
+// --- Lecture d’un fichier local (MKV, MP4, MP3, etc.) ---
+const localMediaInput = document.getElementById('localMediaInput');
+
+if (localMediaInput) {
+  localMediaInput.addEventListener('change', (event) => {
+    const file = event.target.files && event.target.files[0];
+    if (!file) return;
+
+    // URL locale (aucun envoi au serveur)
+    const objectUrl = URL.createObjectURL(file);
+
+    // Deviner le type mime si besoin (utile pour MKV)
+    const mimeType = file.type || guessMimeFromExtension(file.name);
+
+    // On bascule le player Video.js sur ce fichier
+    try {
+      player.pause();
+      player.src({
+        src: objectUrl,
+        type: mimeType || undefined
+      });
+      player.poster(''); // on enlève éventuellement le poster de chaîne
+
+      // Mettre à jour le titre courant
+      const titleEl = document.getElementById('currentTitle');
+      if (titleEl) {
+        titleEl.textContent = 'Fichier local : ' + file.name;
+      }
+
+      // On joue la vidéo/audio
+      player.play().catch(() => {
+        // L’utilisateur devra peut-être cliquer sur Play (politique autoplay)
+      });
+    } catch (err) {
+      console.error('Erreur chargement fichier local :', err);
+      alert("Impossible de lire ce fichier dans le navigateur.");
+    }
+  });
+}
+
+// Petite fonction utilitaire pour deviner le MIME à partir de l’extension
+function guessMimeFromExtension(name) {
+  const ext = name.split('.').pop().toLowerCase();
+  switch (ext) {
+    case 'mp4': return 'video/mp4';
+    case 'webm': return 'video/webm';
+    case 'mkv': return 'video/x-matroska';
+    case 'mp3': return 'audio/mpeg';
+    case 'aac': return 'audio/aac';
+    case 'ogg': return 'audio/ogg';
+    default: return '';
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 function pauseAllPlayers(){
   try { player.pause(); } catch {}
   document.querySelectorAll('video, audio').forEach(el=>{ try { if(!el.paused && !el.ended) el.pause(); } catch {} });
