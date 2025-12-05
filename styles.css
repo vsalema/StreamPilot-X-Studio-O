@@ -1184,15 +1184,7 @@ a:focus-visible,
 
 
 
-/* === Contour Noël autour du player === */
-#player.video-js {
-  border: 2px solid #ff4654;
-  box-shadow: 0 0 18px rgba(255, 0, 60, .35), inset 0 0 12px rgba(0, 255, 120, .25);
-  transition: box-shadow .3s ease;
-}
-#player.video-js:hover {
-  box-shadow: 0 0 28px rgba(255, 0, 60, .55), inset 0 0 18px rgba(0, 255, 120, .35);
-}
+
 
 /* === MODE NOËL — Masqué par défaut === */
 body.noel #player.video-js {
