@@ -320,25 +320,7 @@
     });
   }
 </script>
-<script>
-// Génération de flocons
-function createSnow() {
-  const snow = document.createElement("div");
-  snow.className = "snowflake";
-  snow.textContent = ["❄","✼","❅","✽"][Math.floor(Math.random()*4)];
 
-  snow.style.left = Math.random() * 100 + "vw";
-  snow.style.fontSize = (10 + Math.random()*14) + "px";
-  snow.style.animationDuration = (6 + Math.random()*6) + "s";
-
-  document.body.appendChild(snow);
-
-  setTimeout(() => snow.remove(), 12000);
-}
-
-// Flocons réguliers
-setInterval(createSnow, 350);
-</script>
 <script>
 // === Activer / désactiver le mode Noël ===
 const btnNoel = document.getElementById("btnChristmas");
