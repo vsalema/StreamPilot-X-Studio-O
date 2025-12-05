@@ -1210,30 +1210,22 @@ body.noel .snowflake {
   font-weight:600;
   margin-bottom:10px;
 }
-/* === Contour guirlande lumineuse === */
+/* === Contour givre et lumière bleue === */
 body.noel #player.video-js {
   position: relative;
+  border: 2px solid rgba(180, 220, 255, .45);
+  box-shadow:
+    0 0 18px rgba(150,180,255, .35),
+    inset 0 0 18px rgba(255,255,255,.12);
 }
 
-body.noel #player.video-js::before {
+body.noel #player.video-js::after {
   content: "";
   position: absolute;
-  inset: -4px;
-  border-radius: 14px;
-  z-index: 2;
+  inset: 0;
+  border-radius: 12px;
+  background: url("https://raw.githubusercontent.com/imagesloads/images/refs/heads/main/img_8f69bc555df8bd86.png") center/cover;
+  opacity: 0.07;
+  filter: blur(2px);
   pointer-events: none;
-
-  background:
-    radial-gradient(circle, #ff4444 0%, transparent 60%) 0 0,
-    radial-gradient(circle, #44ff44 0%, transparent 60%) 20px 10px,
-    radial-gradient(circle, #ffdd44 0%, transparent 60%) 40px 0,
-    radial-gradient(circle, #55bbff 0%, transparent 60%) 60px 10px,
-    radial-gradient(circle, #ff55bb 0%, transparent 60%) 80px 0;
-  background-size: 100px 100%;
-  animation: lightsMove 3.5s linear infinite;
-}
-
-@keyframes lightsMove {
-  from { background-position: 0 0; }
-  to   { background-position: -100px 0; }
 }
