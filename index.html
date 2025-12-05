@@ -168,6 +168,8 @@
               <button id="btnMute" type="button" title="Activer/Désactiver le son" aria-pressed="true">🔊</button>
               <span id="clockDisplay" class="clock">00:00:00</span>
               <button id="btnradio" class="favFilter fav-icon" type="button" title="Radio FM">📻</button>
+              <button id="btnChristmas" class="favFilter" type="button" title="Activer le mode Noël">🎄 Noël</button>
+
             </div>
           </div>
 
@@ -336,6 +338,41 @@ function createSnow() {
 
 // Flocons réguliers
 setInterval(createSnow, 350);
+</script>
+<script>
+// === Activer / désactiver le mode Noël ===
+const btnNoel = document.getElementById("btnChristmas");
+let noelActif = false;
+let neigeInterval;
+
+// Création d'un flocon
+function createSnow() {
+  if (!noelActif) return;
+  const snow = document.createElement("div");
+  snow.className = "snowflake";
+  snow.textContent = ["❄","✼","❅","✽"][Math.floor(Math.random()*4)];
+  snow.style.left = Math.random()*100 + "vw";
+  snow.style.fontSize = (10 + Math.random()*14) + "px";
+  snow.style.animationDuration = (6 + Math.random()*6) + "s";
+  document.body.appendChild(snow);
+  setTimeout(() => snow.remove(), 12000);
+}
+
+// Bouton ON/OFF
+btnNoel.addEventListener("click", () => {
+  noelActif = !noelActif;
+
+  if (noelActif) {
+    document.body.classList.add("noel");
+    btnNoel.textContent = "❌ Noël";
+    neigeInterval = setInterval(createSnow, 350);
+  } else {
+    document.body.classList.remove("noel");
+    btnNoel.textContent = "🎄 Noël";
+    clearInterval(neigeInterval);
+    document.querySelectorAll(".snowflake").forEach(el=>el.remove());
+  }
+});
 </script>
 
 </body>
