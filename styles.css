@@ -1218,3 +1218,30 @@ body.noel .snowflake {
   font-weight:600;
   margin-bottom:10px;
 }
+/* === Contour guirlande lumineuse === */
+body.noel #player.video-js {
+  position: relative;
+}
+
+body.noel #player.video-js::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 14px;
+  z-index: 2;
+  pointer-events: none;
+
+  background:
+    radial-gradient(circle, #ff4444 0%, transparent 60%) 0 0,
+    radial-gradient(circle, #44ff44 0%, transparent 60%) 20px 10px,
+    radial-gradient(circle, #ffdd44 0%, transparent 60%) 40px 0,
+    radial-gradient(circle, #55bbff 0%, transparent 60%) 60px 10px,
+    radial-gradient(circle, #ff55bb 0%, transparent 60%) 80px 0;
+  background-size: 100px 100%;
+  animation: lightsMove 3.5s linear infinite;
+}
+
+@keyframes lightsMove {
+  from { background-position: 0 0; }
+  to   { background-position: -100px 0; }
+}
