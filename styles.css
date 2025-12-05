@@ -1165,4 +1165,32 @@ a:focus-visible,
   justify-content: center;
   font-size: 16px;
 }
+/* === Effet neige Noël === */
+.snowflake {
+  position: fixed;
+  top: -10px;
+  color: #ffffffcc;
+  font-size: 12px;
+  pointer-events: none;
+  user-select: none;
+  z-index: 99999;
+  animation: snowFall linear infinite;
+}
+
+@keyframes snowFall {
+  0% { transform: translateY(0) rotate(0deg); opacity:1; }
+  100% { transform: translateY(110vh) rotate(360deg); opacity:0.3; }
+}
+
+
+
+/* === Contour Noël autour du player === */
+#player.video-js {
+  border: 2px solid #ff4654;
+  box-shadow: 0 0 18px rgba(255, 0, 60, .35), inset 0 0 12px rgba(0, 255, 120, .25);
+  transition: box-shadow .3s ease;
+}
+#player.video-js:hover {
+  box-shadow: 0 0 28px rgba(255, 0, 60, .55), inset 0 0 18px rgba(0, 255, 120, .35);
+}
 
