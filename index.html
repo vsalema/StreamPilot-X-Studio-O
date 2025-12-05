@@ -159,8 +159,20 @@
               <button id="btnMute" type="button" title="Activer/Désactiver le son" aria-pressed="true">🔊</button>
               <span id="clockDisplay" class="clock">00:00:00</span>
               <button id="btnradio" class="favFilter fav-icon" type="button" title="Radio FM">📻</button>
-              <button id="btnChristmas" class="favFilter" type="button" title="Activer le mode Noël">🎄 Noël</button>
-          </div>
+              </div>
+          <div id="noelControls" class="noel-controls">
+  <button id="btnChristmas" class="favFilter" type="button" title="Activer/Désactiver le mode Noël">
+    🎄 Noël
+  </button>
+
+  <select id="noelStyleSelect" title="Style du contour Noël">
+    <option value="led">LED</option>
+    <option value="lights">Guirlande</option>
+    <option value="frost">Givre</option>
+  </select>
+</div>
+
+          
           </div>
 
           
@@ -312,10 +324,19 @@
 </script>
 
 <script>
-// === Activer / désactiver le mode Noël ===
+// === Contrôles Mode Noël ===
 const btnNoel = document.getElementById("btnChristmas");
+const selectNoelStyle = document.getElementById("noelStyleSelect");
 let noelActif = false;
-let neigeInterval;
+let neigeInterval = null;
+
+// Classe à appliquer pour le style
+function applyNoelStyle(style) {
+  document.body.classList.remove("noel-style-led", "noel-style-lights", "noel-style-frost");
+  if (style === "led")    document.body.classList.add("noel-style-led");
+  if (style === "lights") document.body.classList.add("noel-style-lights");
+  if (style === "frost")  document.body.classList.add("noel-style-frost");
+}
 
 // Création d'un flocon
 function createSnow() {
@@ -330,22 +351,40 @@ function createSnow() {
   setTimeout(() => snow.remove(), 12000);
 }
 
-// Bouton ON/OFF
-btnNoel.addEventListener("click", () => {
-  noelActif = !noelActif;
+// Toggle ON/OFF Noël
+if (btnNoel) {
+  btnNoel.addEventListener("click", () => {
+    noelActif = !noelActif;
 
-  if (noelActif) {
-    document.body.classList.add("noel");
-    btnNoel.textContent = "❌ Noël";
-    neigeInterval = setInterval(createSnow, 350);
-  } else {
-    document.body.classList.remove("noel");
-    btnNoel.textContent = "🎄 Noël";
-    clearInterval(neigeInterval);
-    document.querySelectorAll(".snowflake").forEach(el=>el.remove());
-  }
-});
+    if (noelActif) {
+      document.body.classList.add("noel");
+      btnNoel.textContent = "❌ Noël";
+      // Style courant
+      applyNoelStyle(selectNoelStyle ? selectNoelStyle.value : "led");
+      // Neige
+      if (!neigeInterval) neigeInterval = setInterval(createSnow, 350);
+    } else {
+      document.body.classList.remove("noel");
+      document.body.classList.remove("noel-style-led","noel-style-lights","noel-style-frost");
+      btnNoel.textContent = "🎄 Noël";
+      if (neigeInterval) {
+        clearInterval(neigeInterval);
+        neigeInterval = null;
+      }
+      document.querySelectorAll(".snowflake").forEach(el => el.remove());
+    }
+  });
+}
+
+// Changement de style à la volée
+if (selectNoelStyle) {
+  selectNoelStyle.addEventListener("change", () => {
+    if (!noelActif) return; // rien si mode Noël OFF
+    applyNoelStyle(selectNoelStyle.value);
+  });
+}
 </script>
+
 
 </body>
 </html>
