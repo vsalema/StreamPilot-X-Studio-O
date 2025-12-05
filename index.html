@@ -44,6 +44,16 @@
     <!-- ASIDE -->
     <aside id="playlistAside" aria-label="Playlist M3U">
       <div class="brand"></div>
+      <div style="
+  background: linear-gradient(120deg,#ff4d4d,#ffcc00);
+  padding:8px 12px;
+  border-radius:10px;
+  text-align:center;
+  font-weight:600;
+  margin-bottom:10px;">
+  🎄 Joyeux Noël ! 🎁
+</div>
+
       <div class="aside-row">
   <!-- Texte raccourci : Favoris -> Fav -->
   <button id="btnFavOnly" class="favFilter" type="button" title="Afficher uniquement les favoris">⭐ Fav</button>
@@ -308,5 +318,25 @@
     });
   }
 </script>
+<script>
+// Génération de flocons
+function createSnow() {
+  const snow = document.createElement("div");
+  snow.className = "snowflake";
+  snow.textContent = ["❄","✼","❅","✽"][Math.floor(Math.random()*4)];
+
+  snow.style.left = Math.random() * 100 + "vw";
+  snow.style.fontSize = (10 + Math.random()*14) + "px";
+  snow.style.animationDuration = (6 + Math.random()*6) + "s";
+
+  document.body.appendChild(snow);
+
+  setTimeout(() => snow.remove(), 12000);
+}
+
+// Flocons réguliers
+setInterval(createSnow, 350);
+</script>
+
 </body>
 </html>
