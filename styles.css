@@ -1194,3 +1194,27 @@ a:focus-visible,
   box-shadow: 0 0 28px rgba(255, 0, 60, .55), inset 0 0 18px rgba(0, 255, 120, .35);
 }
 
+/* === MODE NOËL — Masqué par défaut === */
+body.noel #player.video-js {
+  border: 2px solid #ff4654;
+  box-shadow: 0 0 18px rgba(255, 0, 60, .35), inset 0 0 12px rgba(0, 255, 120, .25);
+}
+
+body.noel .xmas-banner {
+  display:block;
+}
+
+body.noel .snowflake {
+  display:block;
+}
+
+/* Bannière Noël masquée hors mode Noël */
+.xmas-banner {
+  display:none;
+  background: linear-gradient(120deg,#ff4d4d,#ffcc00);
+  padding:8px 12px;
+  border-radius:10px;
+  text-align:center;
+  font-weight:600;
+  margin-bottom:10px;
+}
