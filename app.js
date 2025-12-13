@@ -448,7 +448,7 @@ sortSelect.addEventListener('change', (e)=>{ sortMode = e.target.value || 'origi
 
 const samples = [
   { label: 'Film', url: 'https://vsalema.github.io/tvpt4/css/playlist_par_genre.m3u' },
-  { label: 'France tv🇫🇷', url: 'https://vsalema.github.io/tvpt4/css/TVradioZap-TV-Europe+_s_2024-12-27.m3u' },
+  { label: 'France tv🇫🇷', url: 'https://vsalema.github.io/tvpt4/css/playlist-tvf-r.m3u' },
   { label: 'World/Channels', url: 'https://vsalema.github.io/tvpt4/css/world-m3u.m3u' },
   { label: 'free-tv', url: '' },
   { label: 'MP3', url: 'https://vsalema.github.io/MP3/playlist.m3u8', cover: 'https://image.tmdb.org/t/p/original/sSkhWrgE497L4PYpmPGXwYHulMa.jpg' },
